@@ -1,4 +1,4 @@
-<?php require('header.php')?>
+<?php require('../includes/header.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -317,132 +317,11 @@
                         <p class="mb-0 mt-2">Review your delicious selections</p>
                     </div>
 
-                    <div id="cart-items">
-                        <!-- Cart Item 1 -->
-                        <div class="cart-item" data-item-id="1">
-                            <div class="row align-items-center">
-                                <div class="col-md-2 col-3">
-                                    <img src="images/mpizza1.jpg" 
-                                         alt="Margherita Pizza" class="item-image">
-                                </div>
-                                <div class="col-md-5 col-9">
-                                    <div class="item-details">
-                                        <h6>Margherita Pizza</h6>
-                                        <p class="item-description">Its ingredients representing the colours of the Italian flag.</p>
-                                        <div class="item-options">
-                                            <span class="option-badge">Large</span>
-                                            <span class="option-badge">Thin Crust</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-6 text-center">
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="updateQuantity(1, -1)">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="quantity-display" id="qty-1">1</span>
-                                        <button class="quantity-btn" onclick="updateQuantity(1, 1)">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-4 text-end">
-                                    <div class="item-price">₹<span id="price-1">300.00</span></div>
-                                    <small class="text-muted">₹120.49 each</small>
-                                </div>
-                                <div class="col-md-1 col-2 text-end">
-                                    <button class="remove-btn" onclick="removeItem(1)">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Cart Item 2 -->
-                        <div class="cart-item" data-item-id="2">
-                            <div class="row align-items-center">
-                                <div class="col-md-2 col-3">
-                                    <img src="images/mpizza2.jpg" 
-                                         alt="pizza" class="item-image">
-                                </div>
-                                <div class="col-md-5 col-9">
-                                    <div class="item-details">
-                                        <h6>Paneer Capsicum</h6>
-                                        <p class="item-description">This Indian-inspired option includes spiced paneer, onions, capsicum, red paprika, and mint mayonnaise on a tandoori sauce base with mozzarella cheese.</p>
-                                        <div class="item-options">
-                                            <span class="option-badge">Medium</span>
-                                            <span class="option-badge">Extra Sauce</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-6 text-center">
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="updateQuantity(2, -1)">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="quantity-display" id="qty-2">1</span>
-                                        <button class="quantity-btn" onclick="updateQuantity(2, 1)">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-4 text-end">
-                                    <div class="item-price">₹<span id="price-2">400</span></div>
-                                    <small class="text-muted">₹11.99 each</small>
-                                </div>
-                                <div class="col-md-1 col-2 text-end">
-                                    <button class="remove-btn" onclick="removeItem(2)">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Cart Item 3 -->
-                        <div class="cart-item" data-item-id="3">
-                            <div class="row align-items-center">
-                                <div class="col-md-2 col-3">
-                                    <img src="images/mpizza3.jpg" 
-                                         alt="Caesar Salad" class="item-image">
-                                </div>
-                                <div class="col-md-5 col-9">
-                                    <div class="item-details">
-                                        <h6>Caesar Salad</h6>
-                                        <p class="item-description">Crisp romaine lettuce, parmesan, croutons, caesar dressing</p>
-                                        <div class="item-options">
-                                            <span class="option-badge">Regular</span>
-                                            <span class="option-badge">Extra Cheese</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-6 text-center">
-                                    <div class="quantity-controls">
-                                        <button class="quantity-btn" onclick="updateQuantity(3, -1)">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="quantity-display" id="qty-3">1</span>
-                                        <button class="quantity-btn" onclick="updateQuantity(3, 1)">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-md-2 col-4 text-end">
-                                    <div class="item-price">$<span id="price-3">8.50</span></div>
-                                    <small class="text-muted">$8.50 each</small>
-                                </div>
-                                <div class="col-md-1 col-2 text-end">
-                                    <button class="remove-btn" onclick="removeItem(3)">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div id="cart-items"></div>
 
                 <!-- Continue Shopping Button -->
                 <div class="text-center mt-4">
-                    <a href="my_order.php" class="continue-shopping">
+                    <a href="menu.php" class="continue-shopping">
                         <i class="fas fa-arrow-right me-2"></i>Continue 
                     </a>
                 </div>

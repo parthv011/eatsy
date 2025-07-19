@@ -1,4 +1,4 @@
-<?php require('header.php') ?>
+<?php require('includes/header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -232,6 +232,6 @@
     </div>
 
 
-<?php require('footer.php') ?>
+<?php require('includes/footer.php') ?>
 </body>
 </html>

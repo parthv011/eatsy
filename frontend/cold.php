@@ -1,4 +1,4 @@
-<?php require('header.php') ?>
+<?php require('../includes/header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +49,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/md1.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/md1.jpg" class="img-fluid product-image" alt="Chocolate Milkshake">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Chocolate Milkshake</h1>
                     <p class="lead">A timeless favorite, the classic chocolate milkshake is a smooth and creamy blend of chocolate ice cream, milk, and often a dash of chocolate syrup or cocoa powder.</p>
                     <h2 class="mb-4">₹ 280.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -69,15 +69,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/md2.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/md2.jpg" class="img-fluid product-image" alt="Mango Milkshake">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Mango Milkshake</h1>
                     <p class="lead">A particularly beloved summer shake, it combines the sweetness of ripe mangoes with chilled milk and sometimes a hint of cardamom, offering a tropical and refreshing taste.</p>
                     <h2 class="mb-4">₹ 260.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -89,15 +89,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/md3.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/md3.jpg" class="img-fluid product-image" alt="Strawberry Milkshake">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Strawberry Milkshake</h1>
                     <p class="lead">A fruity and vibrant choice, this milkshake combines fresh or frozen strawberries with milk, and often strawberry ice cream, for a delightful sweet and tangy flavor profile.</p>
                     <h2 class="mb-4">₹ 230.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -109,15 +109,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/md4.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/md4.jpg" class="img-fluid product-image" alt="Vanilla Milkshake">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Vanilla Milkshake</h1>
                     <p class="lead"> A simple yet elegant classic, the vanilla milkshake showcases the pure essence of vanilla blended with creamy vanilla ice cream and milk.</p>
                     <h2 class="mb-4">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -129,15 +129,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/md5.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/md5.jpg" class="img-fluid product-image" alt="Milky Coffee">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Milky Coffee</h1>
                     <p class="lead">A caffeine kick in milkshake form, it's typically made with coffee ice cream or brewed coffee, milk, and can be customized with chocolate syrup for a mocha variation or other flavorings for a cappuccino twist.</p>
                     <h2 class="mb-4">₹ 260.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -147,6 +147,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('footer.php') ?>
+<?php require('../includes/footer.php') ?>
 </body>
 </html>

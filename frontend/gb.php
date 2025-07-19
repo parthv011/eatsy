@@ -1,4 +1,4 @@
-<?php require('header.php') ?>
+<?php require('../includes/header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +49,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/gb1.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/gb1.jpg" class="img-fluid product-image" alt="Fluffy Bread With Crispy Crust">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Fluffy Bread With Crispy Crust</h1>
                     <p class="lead">Its ingredients representing the colours of the Italian flag. These ingredients include white sauce, white mozzarella and fresh green basil.</p>
                     <h2 class="mb-4">₹ 210.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -69,16 +69,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/gb2.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/gb2.jpg" class="img-fluid product-image" alt="Double Cheese Bread">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Double Cheese Bread</h1>
                     <p class="lead">includes spiced garlic, onions, capsicum, red paprika, and mint mayonnaise on a tandoori sauce base with mozzarella cheese.</p>
                     <h2 class="mb-4">₹ 190.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
-                    </div>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                 </div>
             </div>
         </div>
@@ -89,15 +88,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/gb3.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/gb3.jpg" class="img-fluid product-image" alt="Margherita Cheese Bread">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Margherita Cheese Bread</h1>
                     <p class="lead">This flavor-packed margherita pizza features crunchy onions, crisp capsicum, juicy tomatoes, and jalapenos, all topped with exotic Mexican herbs and a liberal sprinkling of cheese.</p>
                     <h2 class="mb-4">₹ 250.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -109,16 +108,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/gb4.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/gb4.jpg" class="img-fluid product-image" alt="Crunchy Slices">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Crunchy Slices</h1>
                     <p class="lead">A simple combination of cheese Typically includes garlic and white sauce.</p>
                     <h2 class="mb-4">₹ 160.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
-                    </div>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                 </div>
             </div>
         </div>
@@ -127,6 +125,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('footer.php') ?>
+<?php require('../includes/footer.php') ?>
 </body>
 </html>

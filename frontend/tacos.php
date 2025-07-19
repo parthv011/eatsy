@@ -1,4 +1,4 @@
-<?php require('header.php') ?>
+<?php require('../includes/header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +49,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/mt1.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/mt1.jpg" class="img-fluid product-image" alt="Paneer Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Paneer Tacos</h1>
                     <p class="lead">Its ingredients representing the paneer and cheese with sous or many items.</p>
                     <h2 class="mb-4">₹ 300.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -69,15 +69,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/mt2.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/mt2.jpg" class="img-fluid product-image" alt="Vegetable Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Vagetable Tacos</h1>
+                    <h1 class="display-4 fw-bold">Vegetable Tacos</h1>
                     <p class="lead">This Indian-inspired option includes spiced, onions, capsicum, red paprika, and mint mayonnaise on a tandoori sauce base with mozzarella cheese.</p>
                     <h2 class="mb-4">₹ 240.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -89,15 +89,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/mt3.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/mt3.jpg" class="img-fluid product-image" alt="Black Bean Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Black Bean Tacos</h1>
                     <p class="lead">This flavor-packed bean features crunchy onions, crisp capsicum, juicy tomatoes, and jalapenos, all topped with exotic Mexican herbs and a liberal sprinkling of cheese.</p>
                     <h2 class="mb-4">₹ 450.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -109,15 +109,15 @@
     <div class="row justify-content-center">
         <div class="col-lg-10"> <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="images/mt4.jpg" class="img-fluid product-image" alt="Margherita Pizza">
+                    <img src="../includes/images/mt4.jpg" class="img-fluid product-image" alt="Garlic Butter Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Garlic Butter Tacos</h1>
                     <p class="lead">A simple combination of cheese and garlic with butter Typically includes onion and capsicum.</p>
                     <h2 class="mb-4">₹ 360.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <button class="btn btn-light btn-lg me-md-2" type="button">Add To Cart</button>
-                        <button class="btn btn-dark btn-lg" type="button">Order Now</button>
+                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -127,6 +127,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('footer.php') ?>
+<?php require('../includes/footer.php') ?>
 </body>
 </html>
