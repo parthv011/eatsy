@@ -70,43 +70,43 @@
   <div style="z-index: 50; transform: translateY(0%); width: 100%;">
     <img src="includes/images/bg-2.jpg" class="img-fluid mainimg" alt="Oops!!!">
 
-    <h2 class="mt-0 pt-4 text-center mb-4 fw-bold h-font">MENU</h2>
+    <a href="frontend/menu.php"><h2 class="mt-0 pt-4 text-center mb-4 fw-bold h-font">MENU</h2></a>
     <div class="container">
       <div class="row mb-4">
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="pizza.php"><img src="includes/images/pizza.jpg" class="card-img-top"></a>
+            <img src="includes/images/pizza.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="burger.php"><img src="includes/images/burger-2.jpg" class="card-img-top"></a>
+           <img src="includes/images/burger-2.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="sandwich.php"><img src="includes/images/sandwich-2.jpg" class="card-img-top"></a>
+            <img src="includes/images/sandwich-2.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="tacos.php"><img src="includes/images/tacos.jpg" class="card-img-top"></a>
+            <img src="includes/images/tacos.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="gb.php"><img src="includes/images/gb.jpg" class="card-img-top"></a>
+            <img src="includes/images/gb.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="cold.php"><img src="includes/images/shake.jpg" class="card-img-top"></a>
+            <img src="includes/images/shake.jpg" class="card-img-top">
           </div>
         </div>
       </div>
