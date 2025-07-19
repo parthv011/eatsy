@@ -68,7 +68,7 @@
 
 <body>
   <div style="z-index: 50; transform: translateY(0%); width: 100%;">
-    <img src="images/bg-2.jpg" class="img-fluid mainimg" alt="Oops!!!">
+    <img src="includes/images/bg-2.jpg" class="img-fluid mainimg" alt="Oops!!!">
 
     <h2 class="mt-0 pt-4 text-center mb-4 fw-bold h-font">MENU</h2>
     <div class="container">
@@ -76,37 +76,37 @@
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="pizza.php"><img src="Images/pizza.jpg" class="card-img-top"></a>
+            <a href="pizza.php"><img src="includes/images/pizza.jpg" class="card-img-top"></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="burger.php"><img src="Images/burger-2.jpg" class="card-img-top"></a>
+            <a href="burger.php"><img src="includes/images/burger-2.jpg" class="card-img-top"></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="sandwich.php"><img src="Images/sandwich-2.jpg" class="card-img-top"></a>
+            <a href="sandwich.php"><img src="includes/images/sandwich-2.jpg" class="card-img-top"></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="tacos.php"><img src="Images/tacos.jpg" class="card-img-top"></a>
+            <a href="tacos.php"><img src="includes/images/tacos.jpg" class="card-img-top"></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="gb.php"><img src="Images/gb.jpg" class="card-img-top"></a>
+            <a href="gb.php"><img src="includes/images/gb.jpg" class="card-img-top"></a>
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <a href="cold.php"><img src="Images/shake.jpg" class="card-img-top"></a>
+            <a href="cold.php"><img src="includes/images/shake.jpg" class="card-img-top"></a>
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
 
         <div class="col-lg-6">
           <div class="text-center">
-            <img src="images/dboy.jpg" class="img-fluid rounded" alt="Food Delivery">
+            <img src="includes/images/dboy.jpg" class="img-fluid rounded" alt="Food Delivery">
           </div>
         </div>
 
