@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'includes/db.php';
+require '../includes/db.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: backend/login.php");

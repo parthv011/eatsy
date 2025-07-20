@@ -56,8 +56,7 @@
                     <p class="lead">Its ingredients representing the paneer and cheese with sous or many items.</p>
                     <h2 class="mb-4">₹ 300.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                    <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -76,8 +75,7 @@
                     <p class="lead">This Indian-inspired option includes spiced, onions, capsicum, red paprika, and mint mayonnaise on a tandoori sauce base with mozzarella cheese.</p>
                     <h2 class="mb-4">₹ 240.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -96,8 +94,7 @@
                     <p class="lead">This flavor-packed bean features crunchy onions, crisp capsicum, juicy tomatoes, and jalapenos, all topped with exotic Mexican herbs and a liberal sprinkling of cheese.</p>
                     <h2 class="mb-4">₹ 450.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -116,8 +113,7 @@
                     <p class="lead">A simple combination of cheese and garlic with butter Typically includes onion and capsicum.</p>
                     <h2 class="mb-4">₹ 360.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>

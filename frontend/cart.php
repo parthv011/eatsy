@@ -1,5 +1,5 @@
 <?php require('header.php')?>
-
+<?php require('../backend/cart.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -392,6 +392,16 @@
                     <button class="checkout-btn" onclick="proceedToCheckout()">
                         <i class="fas fa-credit-card me-2"></i>Checkout Now
                     </button>
+
+                    <!-- Place Order Button -->
+<form action="../backend/place_order.php" method="POST" class="mt-3 text-center">
+    <button type="submit" class="btn btn-success w-100 mb-2">
+        <i class="fas fa-check-circle me-2"></i>Place Order
+    </button>
+    <a href="menu.php" class="btn btn-outline-primary w-100">
+        <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+    </a>
+</form>
 
                     <!-- Delivery Information -->
                     <div class="delivery-info">

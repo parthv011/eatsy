@@ -56,8 +56,7 @@
                     <p class="lead">A hearty option, featuring a spicy mashed potato filling seasoned with Indian spices like red chili powder, turmeric, and coriander, often accompanied by peas, green chilies, and coriander leaves. It's typically grilled or toasted.</p>
                     <h2 class="mb-4">₹ 120.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -76,8 +75,7 @@
                     <p class="lead">This fusion sandwich incorporates marinated and grilled paneer (Indian cottage cheese) cubes with vegetables and a spicy green chutney.</p>
                     <h2 class="mb-4">₹ 200.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -96,8 +94,7 @@
                     <p class="lead">A healthy and satisfying sandwich filled with a variety of fresh vegetables like onions, tomatoes, cucumbers, bell peppers, sometimes beets, and cheese, all grilled to a crispy texture with a flavorful chutney spread.</p>
                     <h2 class="mb-4">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -116,8 +113,7 @@
                     <p class="lead">This sandwich combines the creamy indulgence of cheese (like mozzarella or cheddar) with a mix of fresh vegetables like carrots, bell peppers, corn, and onions, flavored with herbs and spices. It's typically grilled until the cheese melts.</p>
                     <h2 class="mb-4">₹ 180.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -137,7 +133,6 @@
                     <h2 class="mb-4">₹ 140.00</h2>
                     <div class="d-grid gap-2 d-md-block">
                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>

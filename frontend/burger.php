@@ -113,7 +113,7 @@ body {
                     <p class="lead">A classic Indian favorite featuring a spiced potato patty (aloo tikki), typically topped with onions, tomatoes, and chutney in a bun.</p>
                     <h2 class="mb-4">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                    <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+                    <a href="../backend/add_to_cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
