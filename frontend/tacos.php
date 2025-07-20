@@ -1,4 +1,4 @@
-<?php require('../includes/header.php') ?>
+<?php require('header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -127,6 +127,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('../includes/footer.php') ?>
+<?php require('footer.php') ?>
 </body>
 </html>

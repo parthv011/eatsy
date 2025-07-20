@@ -1,4 +1,4 @@
-<?php require('../includes/header.php')?>
+<?php require('header.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -210,7 +210,7 @@
     <!-- Bootstrap Icons (optional, but good for values section) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<?php require('../includes/footer.php')?>
+<?php require('footer.php')?>
 
 </body>
 </html>

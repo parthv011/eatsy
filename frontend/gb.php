@@ -1,4 +1,4 @@
-<?php require('../includes/header.php') ?>
+<?php require('header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,8 +56,7 @@
                     <p class="lead">Its ingredients representing the colours of the Italian flag. These ingredients include white sauce, white mozzarella and fresh green basil.</p>
                     <h2 class="mb-4">₹ 210.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -76,8 +75,8 @@
                     <p class="lead">includes spiced garlic, onions, capsicum, red paprika, and mint mayonnaise on a tandoori sauce base with mozzarella cheese.</p>
                     <h2 class="mb-4">₹ 190.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
+
                 </div>
             </div>
         </div>
@@ -95,8 +94,7 @@
                     <p class="lead">This flavor-packed margherita pizza features crunchy onions, crisp capsicum, juicy tomatoes, and jalapenos, all topped with exotic Mexican herbs and a liberal sprinkling of cheese.</p>
                     <h2 class="mb-4">₹ 250.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -115,8 +113,7 @@
                     <p class="lead">A simple combination of cheese Typically includes garlic and white sauce.</p>
                     <h2 class="mb-4">₹ 160.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                 </div>
             </div>
         </div>
@@ -125,6 +122,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('../includes/footer.php') ?>
+<?php require('footer.php') ?>
 </body>
 </html>

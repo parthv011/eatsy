@@ -1,5 +1,5 @@
 <?php
-require('../includes/header.php');
+require('header.php');
 require('../includes/db.php');
 session_start();
 

@@ -1,4 +1,4 @@
-<?php require('../includes/header.php') ?>
+<?php require('header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,8 +56,7 @@
                     <p class="lead">A timeless favorite, the classic chocolate milkshake is a smooth and creamy blend of chocolate ice cream, milk, and often a dash of chocolate syrup or cocoa powder.</p>
                     <h2 class="mb-4">₹ 280.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -77,7 +76,7 @@
                     <h2 class="mb-4">₹ 260.00</h2>
                     <div class="d-grid gap-2 d-md-block">
                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+
                     </div>
                 </div>
             </div>
@@ -96,8 +95,7 @@
                     <p class="lead">A fruity and vibrant choice, this milkshake combines fresh or frozen strawberries with milk, and often strawberry ice cream, for a delightful sweet and tangy flavor profile.</p>
                     <h2 class="mb-4">₹ 230.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -116,8 +114,7 @@
                     <p class="lead"> A simple yet elegant classic, the vanilla milkshake showcases the pure essence of vanilla blended with creamy vanilla ice cream and milk.</p>
                     <h2 class="mb-4">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -137,7 +134,6 @@
                     <h2 class="mb-4">₹ 260.00</h2>
                     <div class="d-grid gap-2 d-md-block">
                         <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
                     </div>
                 </div>
             </div>
@@ -147,6 +143,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('../includes/footer.php') ?>
+<?php require('footer.php') ?>
 </body>
 </html>

@@ -68,7 +68,14 @@
 
   <div class="card-login">
     <h2><i class="fas fa-sign-in-alt me-2"></i>Login</h2>
-    <form action="auth/login_process.php" method="POST">
+    <?php if (isset($_GET['error'])): ?>
+  <div class="alert alert-danger text-center"><?php echo $_GET['error']; ?></div>
+<?php endif; ?>
+<?php if (isset($_GET['registered'])): ?>
+  <div class="alert alert-success text-center">Registration successful. Please log in.</div>
+<?php endif; ?>
+
+    <form action="../auth/login.php" method="POST">
       <div class="mb-3">
         <label for="email" class="form-label">Email or Username</label>
         <input type="text" class="form-control" id="email" name="email" required>
@@ -76,9 +83,6 @@
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required>
-      </div>
-      <div class="text-end">
-        <a href="#">Forgot password?</a>
       </div>
       <button type="submit" class="btn btn-login mt-3">Login</button>
       <div class="text-center mt-3">

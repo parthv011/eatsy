@@ -1,4 +1,4 @@
-<?php require('includes/header.php') ?>
+<?php require('header.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,45 +68,45 @@
 
 <body>
   <div style="z-index: 50; transform: translateY(0%); width: 100%;">
-    <img src="includes/images/bg-2.jpg" class="img-fluid mainimg" alt="Oops!!!">
+    <img src="../includes/images/bg-2.jpg" class="img-fluid mainimg" alt="Oops!!!">
 
-    <a href="frontend/menu.php"><h2 class="mt-0 pt-4 text-center mb-4 fw-bold h-font">MENU</h2></a>
+    <a href="menu.php"><h2 class="mt-0 pt-4 text-center mb-4 fw-bold h-font">MENU</h2></a>
     <div class="container">
       <div class="row mb-4">
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <img src="includes/images/pizza.jpg" class="card-img-top">
+            <img src="../includes/images/pizza.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-           <img src="includes/images/burger-2.jpg" class="card-img-top">
+           <img src="../includes/images/burger-2.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <img src="includes/images/sandwich-2.jpg" class="card-img-top">
+            <img src="../includes/images/sandwich-2.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <img src="includes/images/tacos.jpg" class="card-img-top">
+            <img src="../includes/images/tacos.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <img src="includes/images/gb.jpg" class="card-img-top">
+            <img src="../includes/images/gb.jpg" class="card-img-top">
           </div>
         </div>
 
         <div class="col-lg-3 col-lg-4 my-3 ">
           <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-            <img src="includes/images/shake.jpg" class="card-img-top">
+            <img src="../includes/images/shake.jpg" class="card-img-top">
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
 
         <div class="col-lg-6">
           <div class="text-center">
-            <img src="includes/images/dboy.jpg" class="img-fluid rounded" alt="Food Delivery">
+            <img src="../includes/images/dboy.jpg" class="img-fluid rounded" alt="Food Delivery">
           </div>
         </div>
 
@@ -232,6 +232,6 @@
     </div>
 
 
-<?php require('includes/footer.php') ?>
+<?php require('footer.php') ?>
 </body>
 </html>

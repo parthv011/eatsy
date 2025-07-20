@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,10 +61,22 @@
             <a class="nav-link" href="my_order.php">My Order</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">About us</a>
+            <a class="nav-link" href="../frontend/about.php">About us</a>
           </li>
-        </ul>
-      </div>
+          <li class="nav-item">
+            <a class="nav-link" href="../auth/logout.php">Logout</a>
+          </li>
+    </div>
+  </div>
+</nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
+
     </div>
   </nav>
 
@@ -71,5 +84,4 @@
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
   </script>
 </body>
-
 </html>

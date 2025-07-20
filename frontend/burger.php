@@ -1,4 +1,4 @@
-<?php require('../includes/header.php') ?>
+<?php require('header.php') ?>
 <script>
     function renderCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -60,12 +60,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizza</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-  body {
-      background-color: #f1dcdcff; 
+body {
+    background-color: #f1dcdcff; 
     }
     /* Custom CSS for 3D effect */
     .product-card-3d {
@@ -113,8 +113,7 @@
                     <p class="lead">A classic Indian favorite featuring a spiced potato patty (aloo tikki), typically topped with onions, tomatoes, and chutney in a bun.</p>
                     <h2 class="mb-4">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                    <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -133,8 +132,7 @@
                     <p class="lead">A burger with a paneer (Indian cottage cheese) patty, often grilled or shallow fried, and spiced according to preference.</p>
                     <h2 class="mb-4">₹ 200.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                    <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -153,8 +151,7 @@
                     <p class="lead">A patty made from various steamed or sautéed vegetables like potatoes, carrots, peas, beans, and cauliflower, spiced with Indian masalas like garam masala and cumin.</p>
                     <h2 class="mb-4">₹ 180.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                            <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                        <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -173,8 +170,7 @@
                     <p class="lead">A popular Western import, often made with black beans and other ingredients, sometimes with an Indian twist like spicy mayo or avocado and mango.</p>
                     <h2 class="mb-4">₹ 270.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                             <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                            <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -193,8 +189,7 @@
                     <p class="lead">A vegan-friendly option, with a patty made from tofu, sometimes crumbled or grated, and used as a substitute for paneer or cheese.</p>
                     <h2 class="mb-4">₹ 300.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                             <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                            <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -213,8 +208,7 @@
                     <p class="lead">Patties made from lentils, often spiced with Indian masalas, and served in a bun or wrapped in lettuce.</p>
                     <h2 class="mb-4">₹ 330.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                             <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
-                        <a href="my_order.php"><button class="btn btn-dark btn-lg">Order Now</button></a>
+                            <a href="cart.php"><button class="btn btn-dark btn-lg">Add To Cart</button></a>
                     </div>
                 </div>
             </div>
@@ -224,6 +218,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php require('../includes/footer.php') ?>
+<?php require('footer.php') ?>
 </body>
 </html>

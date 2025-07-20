@@ -20,9 +20,8 @@
                 <h5 class="mb-3">Links</h5>
                 <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
                 <a href="menu.php" class="d-inline-block mb-2 text-dark text-decoration-none">Menu</a><br>
-                <a href="#cart" class="d-inline-block mb-2 text-dark text-decoration-none">Cart</a><br>
-                <a href="#myorder" class="d-inline-block mb-2 text-dark text-decoration-none">My Order</a><br>
-                <a href="#contactus" class="d-inline-block mb-2 text-dark text-decoration-none">Contact us</a><br>
+                <a href="cart.php" class="d-inline-block mb-2 text-dark text-decoration-none">Cart</a><br>
+                <a href="my_order.php" class="d-inline-block mb-2 text-dark text-decoration-none">My Order</a><br>
             </div>
             <div class="col-lg-4 p-4">
                 <h5 class="mb-3">Follow us</h5>

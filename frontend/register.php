@@ -63,7 +63,11 @@
 
   <div class="card-register">
     <h2><i class="fas fa-user-plus me-2"></i>Register</h2>
-    <form action="auth/register_process.php" method="POST">
+    <?php if (isset($_GET['error'])): ?>
+  <div class="alert alert-danger text-center"><?php echo $_GET['error']; ?></div>
+<?php endif; ?>
+
+    <form action="../auth/register.php" method="POST">
       <div class="mb-3">
         <label for="name" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="name" name="name" required>
