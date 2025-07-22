@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to Eastys</title>
+  <title>Welcome to Eatsy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- Bootstrap CSS -->
@@ -106,7 +106,7 @@
 
   <div class="welcome-card">
     <div class="food-icon"><i class="fas fa-utensils"></i></div>
-    <h1>Welcome to Eastys</h1>
+    <h1>Welcome to Eatsy</h1>
     <p>Your favorite meals delivered with love 🍽️</p>
     
     <a href="frontend/login.php" class="btn btn-custom btn-login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>

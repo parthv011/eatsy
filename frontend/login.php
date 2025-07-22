@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login - Eastys</title>
+  <title>Login - Eatsy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- Bootstrap + Font + Icons -->
