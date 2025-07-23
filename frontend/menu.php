@@ -135,10 +135,6 @@
                 <div class="card custom-card">
                     <div class="position-relative">
                         <img src="../includes/images/mpizza1.jpg" class="card-img-top" alt="pizza">
-                        <div class="card-img-overlay-custom">
-                            <span class="price-badge">₹ 300.00</span>
-                            <button class="btn cart-icon-btn"><i class="fas fa-shopping-basket"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Pizza</h5>
@@ -154,9 +150,6 @@
                 <div class="card custom-card">
                     <div class="position-relative">
                         <img src="../includes/images/mbg1.jpg" class="card-img-top" alt="pizza">
-                        <div class="card-img-overlay-custom">
-                            <button class="btn cart-icon-btn"><i class="fas fa-shopping-basket"></i></button>
-                        </div>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Burger</h5>
