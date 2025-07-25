@@ -8,21 +8,29 @@ if (!isset($_SESSION['cart'])) {
 }
 
 // Handle cart actions
-if ($_POST['action'] ?? '' === 'update_quantity') {
-    $item_id = $_POST['item_id'];
-    $quantity = max(1, intval($_POST['quantity']));
-    if (isset($_SESSION['cart'][$item_id])) {
-        $_SESSION['cart'][$item_id]['quantity'] = $quantity;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_POST['action'] ?? '' === 'update_quantity') {
+        $item_id = $_POST['item_id'];
+        $quantity = max(1, intval($_POST['quantity']));
+        if (isset($_SESSION['cart'][$item_id])) {
+            $_SESSION['cart'][$item_id]['quantity'] = $quantity;
+        }
     }
-}
 
-if ($_POST['action'] ?? '' === 'remove_item') {
-    $item_id = $_POST['item_id'];
-    unset($_SESSION['cart'][$item_id]);
-}
+    if ($_POST['action'] ?? '' === 'remove_item') {
+        $item_id = $_POST['item_id'];
+        if (isset($_SESSION['cart'][$item_id])) {
+            unset($_SESSION['cart'][$item_id]);
+        }
+    }
 
-if ($_POST['action'] ?? '' === 'clear_cart') {
-    $_SESSION['cart'] = [];
+    if ($_POST['action'] ?? '' === 'clear_cart') {
+        $_SESSION['cart'] = [];
+    }
+    
+    // Redirect after POST to prevent form resubmission issues
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit();
 }
 
 // Calculate totals
@@ -178,7 +186,7 @@ $total = $subtotal + $tax + $delivery_fee;
                             <div class="quantity-controls">
                                 <form method="POST" style="display: inline;">
                                     <input type="hidden" name="action" value="update_quantity">
-                                    <input type="hidden" name="item_id" value="<?php echo $id; ?>">
+                                    <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($id); ?>">
                                     <input type="hidden" name="quantity" value="<?php echo max(1, $item['quantity'] - 1); ?>">
                                     <button type="submit" class="quantity-btn" <?php echo $item['quantity'] <= 1 ? 'disabled' : ''; ?>>
                                         <i class="fas fa-minus"></i>
@@ -187,7 +195,7 @@ $total = $subtotal + $tax + $delivery_fee;
                                 <span class="quantity-display"><?php echo $item['quantity']; ?></span>
                                 <form method="POST" style="display: inline;">
                                     <input type="hidden" name="action" value="update_quantity">
-                                    <input type="hidden" name="item_id" value="<?php echo $id; ?>">
+                                    <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($id); ?>">
                                     <input type="hidden" name="quantity" value="<?php echo $item['quantity'] + 1; ?>">
                                     <button type="submit" class="quantity-btn">
                                         <i class="fas fa-plus"></i>
@@ -202,8 +210,8 @@ $total = $subtotal + $tax + $delivery_fee;
                         <div class="col-md-1 col-2 text-end">
                             <form method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="remove_item">
-                                <input type="hidden" name="item_id" value="<?php echo $id; ?>">
-                                <button type="submit" class="remove-btn" onclick="return confirm('Remove this item?')">
+                                <input type="hidden" name="item_id" value="<?php echo htmlspecialchars($id); ?>">
+                                <button type="submit" class="remove-btn" onclick="return confirm('Remove this item from cart?')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
