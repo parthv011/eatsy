@@ -227,7 +227,7 @@ body {
                     <p class="lead">A delightful combination of crispy vegetables and spices, served in a slider format for a fun and tasty bite.</p>
                     <h2 class="mb-4 price-tag">₹ 270.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=slider_crunchy_slices" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=slider_crunchy" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
