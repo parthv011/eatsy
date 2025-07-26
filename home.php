@@ -109,8 +109,8 @@
     <h1>Welcome to Eatsy</h1>
     <p>Your favorite meals delivered with love 🍽️</p>
     
-    <a href="frontend/login.php" class="btn btn-custom btn-login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
-    <a href="frontend/register.php" class="btn btn-custom btn-register"><i class="fas fa-user-plus me-2"></i>Register</a>
+    <a href="users/login.php" class="btn btn-custom btn-login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
+    <a href="users/register.php" class="btn btn-custom btn-register"><i class="fas fa-user-plus me-2"></i>Register</a>
   </div>
 
   <!-- Bootstrap JS -->

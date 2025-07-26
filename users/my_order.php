@@ -3,7 +3,7 @@ session_start();
 require '../includes/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    echo "<div>Please log in to view orders.</div>";
+    echo "Please log in to view orders.";
     exit;
 }
 

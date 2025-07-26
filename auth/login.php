@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->num_rows > 0 && $stmt->fetch()) {
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['user_id'] = $id;
-            header("Location: ../frontend/index.php"); // Success
+            header("Location: ../users/index.php"); // Success
             exit;
         } else {
-            header("Location: ../frontend/login.php?error=Invalid Password");
+            header("Location: ../users/login.php?error=Invalid Password");
             exit;
         }
     } else {
-        header("Location: ../frontend/login.php?error=Email Not Found");
+        header("Location: ../users/login.php?error=Email Not Found");
         exit;
     }
 }

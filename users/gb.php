@@ -150,21 +150,21 @@ body {
 <?php endif; ?>
 
 <div class="container my-5">
-    <h1 class="text-center mb-5">Our Delicious Burgers</h1>
+    <h1 class="text-center mb-5">Our Delightful Sliders</h1>
     
-    <!-- Aloo Tikki Burger -->
+    <!-- Fluffy Bread With Crispy Crust -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg1.jpg" class="img-fluid product-image" alt="Aloo Tikki Burger">
+                    <img src="../includes/images/gd1.jpeg" class="img-fluid product-image" alt="Fluffy Bread With Crispy Crust">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Aloo Tikki Burger</h1>
-                    <p class="lead">A classic Indian favorite featuring a spiced potato patty (aloo tikki), typically topped with onions, tomatoes, and chutney in a bun.</p>
+                    <h1 class="display-4 fw-bold">Fluffy Bread With Crispy Crust</h1>
+                    <p class="lead">A delightful slider featuring fluffy bread with a crispy crust, filled with a variety of delicious ingredients.</p>
                     <h2 class="mb-4 price-tag">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_aloo_tikki" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=slider_fluffy_bread" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -173,19 +173,19 @@ body {
         </div>
     </div>
 
-    <!-- Cheese Paneer Burger -->
+    <!--Double Cheese Bread -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg2.jpg" class="img-fluid product-image" alt="Cheese Paneer Burger">
+                    <img src="../includes/images/gd2.jpeg" class="img-fluid product-image" alt="Double Cheese Bread">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Cheese Paneer Burger</h1>
-                    <p class="lead">A burger with a paneer (Indian cottage cheese) patty, often grilled or shallow fried, and spiced according to preference.</p>
+                    <h1 class="display-4 fw-bold">Double Cheese Bread</h1>
+                    <p class="lead">A delicious slider featuring double layers of cheese, melted to perfection, and served on fluffy bread.</p>
                     <h2 class="mb-4 price-tag">₹ 200.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_paneer" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=slider_double_cheese" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -194,19 +194,19 @@ body {
         </div>
     </div>
 
-    <!-- Mix Vegetable Burger -->
+    <!--Margherita Cheese Bread-->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg3.jpg" class="img-fluid product-image" alt="Mix Vegetable Burger">
+                    <img src="../includes/images/gb3.jpg" class="img-fluid product-image" alt="Margherita Cheese Bread">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Mix Vegetable Burger</h1>
-                    <p class="lead">A patty made from various steamed or sautéed vegetables like potatoes, carrots, peas, beans, and cauliflower, spiced with Indian masalas like garam masala and cumin.</p>
-                    <h2 class="mb-4 price-tag">₹ 180.00</h2>
+                    <h1 class="display-4 fw-bold">Margherita Cheese Bread</h1>
+                    <p class="lead">A classic Margherita slider topped with fresh mozzarella, tomatoes, and basil on fluffy bread.</p>
+                    <h2 class="mb-4 price-tag">₹ 200.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_mix_veg" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=slider_margherita_cheese" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -215,60 +215,19 @@ body {
         </div>
     </div>
 
-    <!-- Black Bean Burger -->
+    <!-- Crunchy Slices -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg4.jpg" class="img-fluid product-image" alt="Black Bean Burger">
+                    <img src="../includes/images/gb4.jpg" class="img-fluid product-image" alt="Crunchy Slices">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Black Bean Burger</h1>
-                    <p class="lead">A popular Western import, often made with black beans and other ingredients, sometimes with an Indian twist like spicy mayo or avocado and mango.</p>
+                    <h1 class="display-4 fw-bold">Crunchy Slices</h1>
+                    <p class="lead">A delightful combination of crispy vegetables and spices, served in a slider format for a fun and tasty bite.</p>
                     <h2 class="mb-4 price-tag">₹ 270.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_black_bean" class="cart-btn">
-                            <i class="fas fa-shopping-cart me-2"></i>Add To Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tofu Burger -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-            <div class="d-flex flex-column flex-md-row product-card-3d">
-                <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg5.jpg" class="img-fluid product-image" alt="Tofu Burger">
-                </div>
-                <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Tofu Burger</h1>
-                    <p class="lead">A delicious burger featuring a grilled tofu patty, often marinated in spices and served with fresh vegetables.</p>
-                    <h2 class="mb-4 price-tag">₹ 250.00</h2>
-                    <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_tofu" class="cart-btn">
-                            <i class="fas fa-shopping-cart me-2"></i>Add To Cart
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Lentil Burger -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-            <div class="d-flex flex-column flex-md-row product-card-3d">
-                <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg6.jpg" class="img-fluid product-image" alt="Lentil Burger">
-                </div>
-                <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Lentil Burger</h1>
-                    <p class="lead">A spiced lentil patty made with red or green lentils, often served with a tangy chutney or sauce.</p>
-                    <h2 class="mb-4 price-tag">₹ 330.00</h2>
-                    <div class="d-grid gap  -2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_lentil" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=slider_crunchy_slices" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>

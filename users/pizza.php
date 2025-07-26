@@ -150,14 +150,14 @@ body {
 <?php endif; ?>
 
 <div class="container my-5">
-    <h1 class="text-center mb-5">Our Delicious Burgers</h1>
-    
-    <!-- -->
+    <h1 class="text-center mb-5">Our Cheesyyyy Pizzas</h1>
+
+    <!-- Margherita Pizza -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg1.jpg" class="img-fluid product-image" alt="Aloo Tikki Burger">
+                    <img src="../includes/images/mpizza1.jpg" class="img-fluid product-image" alt="Margherita Pizza">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Margherita Pizza</h1>
@@ -178,7 +178,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg2.jpg" class="img-fluid product-image" alt="Paneer Capsicum Pizza">
+                    <img src="../includes/images/mpizza2.jpg" class="img-fluid product-image" alt="Paneer Capsicum Pizza">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Paneer Capsicum Pizza</h1>
@@ -199,14 +199,14 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg3.jpg" class="img-fluid product-image" alt="Mix Vegetable Burger">
+                    <img src="../includes/images/mpizza3.jpg" class="img-fluid product-image" alt="Mix Vegetable Pizza">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Mix Vegetable Burger</h1>
-                    <p class="lead">A patty made from various steamed or sautéed vegetables like potatoes, carrots, peas, beans, and cauliflower, spiced with Indian masalas like garam masala and cumin.</p>
-                    <h2 class="mb-4 price-tag">₹ 180.00</h2>
+                    <h1 class="display-4 fw-bold">Mexican Green Wave Pizza</h1>
+                    <p class="lead">A pizza topped with a medley of fresh vegetables, including bell peppers, onions, and olives, all melted together with gooey cheese.</p>
+                    <h2 class="mb-4 price-tag">₹ 400.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_mix_veg" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=pizza_mexican_green" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -215,19 +215,19 @@ body {
         </div>
     </div>
 
-    <!-- Black Bean Burger -->
+    <!-- Cheese & Corn Pizza -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg4.jpg" class="img-fluid product-image" alt="Black Bean Burger">
+                    <img src="../includes/images/mpizza4.png" class="img-fluid product-image" alt="Cheese & Corn Pizza">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Black Bean Burger</h1>
-                    <p class="lead">A popular Western import, often made with black beans and other ingredients, sometimes with an Indian twist like spicy mayo or avocado and mango.</p>
+                    <h1 class="display-4 fw-bold">Cheese & Corn Pizza</h1>
+                    <p class="lead">A delicious pizza topped with a generous amount of cheese and sweet corn, baked to perfection.</p>
                     <h2 class="mb-4 price-tag">₹ 270.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_black_bean" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=pizza_cheese_corn" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -236,19 +236,19 @@ body {
         </div>
     </div>
 
-    <!-- Tofu Burger -->
+    <!-- Pesto Pizza -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg5.jpg" class="img-fluid product-image" alt="Tofu Burger">
+                    <img src="../includes/images/mpizza5.jpg" class="img-fluid product-image" alt="Pesto Pizza">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Tofu Burger</h1>
-                    <p class="lead">A delicious burger featuring a grilled tofu patty, often marinated in spices and served with fresh vegetables.</p>
+                    <h1 class="display-4 fw-bold">Pesto Pizza</h1>
+                    <p class="lead">A delicious pizza topped with fresh basil pesto, mozzarella cheese, and a medley of vegetables.</p>
                     <h2 class="mb-4 price-tag">₹ 250.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_tofu" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=pizza_pesto" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -256,19 +256,19 @@ body {
             </div>
         </div>
     </div>
-    <!-- Lentil Burger -->
+    <!-- Peppy Paneer Pizza -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg6.jpg" class="img-fluid product-image" alt="Lentil Burger">
+                    <img src="../includes/images/mpizza6.jpg" class="img-fluid product-image" alt="Peppy Paneer Pizza">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
-                    <h1 class="display-4 fw-bold">Lentil Burger</h1>
-                    <p class="lead">A spiced lentil patty made with red or green lentils, often served with a tangy chutney or sauce.</p>
+                    <h1 class="display-4 fw-bold">Peppy Paneer Pizza</h1>
+                    <p class="lead">A delicious pizza topped with spicy paneer, bell peppers, and onions, baked to perfection.</p>
                     <h2 class="mb-4 price-tag">₹ 330.00</h2>
-                    <div class="d-grid gap  -2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_lentil" class="cart-btn">
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="../backend/add_to_cart.php?item=pizza_peppy_paneer" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
