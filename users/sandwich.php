@@ -150,21 +150,21 @@ body {
 <?php endif; ?>
 
 <div class="container my-5">
-    <h1 class="text-center mb-5">Our Delicious Burgers</h1>
-    
+    <h1 class="text-center mb-5">Our Delicious Sandwiches</h1>
+    <p class="text-center mb-4">Explore our range of mouth-watering sandwiches, perfect for any time of the day!</p>
     <!-- Aloo Masala Sandwich -->
     <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg1.jpg" class="img-fluid product-image" alt="Aloo Tikki Burger">
+                    <img src="../includes/images/ms1.jpg" class="img-fluid product-image" alt="Aloo Tikki Burger">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Aloo Masala Sandwich</h1>
                     <p class="lead">A classic Indian favorite featuring a spiced potato filling, typically topped with onions, tomatoes, and chutney in a sandwich.</p>
                     <h2 class="mb-4 price-tag">₹ 120.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_aloo_tikki" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=sandwich_aloo_masala" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -178,14 +178,14 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg2.jpg" class="img-fluid product-image" alt="Cheese Paneer Burger">
+                    <img src="../includes/images/ms2.jpg" class="img-fluid product-image" alt="Paneer Tikka Sandwich">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Paneer Tikka Sandwich</h1>
                     <p class="lead">A sandwich with a paneer (Indian cottage cheese) filling, often grilled or shallow fried, and spiced according to preference.</p>
                     <h2 class="mb-4 price-tag">₹ 200.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_paneer" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=sandwich_paneer_tikka" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -199,14 +199,14 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg3.jpg" class="img-fluid product-image" alt="Mix Vegetable Burger">
+                    <img src="../includes/images/ms4.jpg" class="img-fluid product-image" alt="Mix Vegetable Sandwich">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Vegetable Grilled Sandwich</h1>
                     <p class="lead">A delicious sandwich filled with a mix of grilled vegetables, spiced to perfection.</p>
-                    <h2 class="mb-4 price-tag">₹ 180.00</h2>
+                    <h2 class="mb-4 price-tag">₹ 150.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_mix_veg" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=sandwich_veg_grilled" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -220,14 +220,14 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg4.jpg" class="img-fluid product-image" alt="Black Bean Burger">
+                    <img src="../includes/images/ms5.jpg" class="img-fluid product-image" alt="Vegetable Cheese Sandwich">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Vegetable Cheese Sandwich</h1>
                     <p class="lead">A popular Western import, often made with a mix of vegetables and cheese, sometimes with an Indian twist like spicy mayo or avocado and mango.</p>
                     <h2 class="mb-4 price-tag">₹ 270.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_black_bean" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=sandwich_veg_cheese" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
@@ -241,14 +241,14 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg5.jpg" class="img-fluid product-image" alt="Curd Sandwich">
+                    <img src="../includes/images/ms6.jpeg" class="img-fluid product-image" alt="Curd Sandwich">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Curd Sandwich</h1>
                     <p class="lead">A delicious sandwich featuring a spiced curd filling, often served with fresh vegetables.</p>
                     <h2 class="mb-4 price-tag">₹ 250.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=burger_tofu" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=sandwich_curds" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>

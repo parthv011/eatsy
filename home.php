@@ -68,24 +68,25 @@
       transition: 0.3s;
     }
 
-    .btn-login {
-      background-color: #ff6f61;
-      color: #fff;
-      border: none;
-    }
-
-    .btn-login:hover {
-      background-color: #e85c50;
-    }
-
-    .btn-register {
+    .btn-userlogin {
       background-color: #ffffff;
-      border: 2px solid #ff6f61;
-      color: #ff6f61;
+      border: 2px solid #4bcf7f;
+      color: #4bcf7f;
     }
 
-    .btn-register:hover {
-      background-color: #ff6f61;
+    .btn-userlogin:hover {
+      background-color: #4bcf7f;
+      color: #fff;
+    }
+
+    .btn-adminlogin {
+      background-color: #ffffff;
+      border: 2px solid #e20e0eff;
+      color: #f02613ff;
+    }
+
+    .btn-adminlogin:hover {
+      background-color: #f82a17ff;
       color: #fff;
     }
 
@@ -109,8 +110,8 @@
     <h1>Welcome to Eatsy</h1>
     <p>Your favorite meals delivered with love 🍽️</p>
     
-    <a href="users/login.php" class="btn btn-custom btn-login"><i class="fas fa-sign-in-alt me-2"></i>Login</a>
-    <a href="users/register.php" class="btn btn-custom btn-register"><i class="fas fa-user-plus me-2"></i>Register</a>
+    <a href="users/login.php" class="btn btn-custom btn-userlogin"><i class="fas fa-user"></i>Users</a>
+    <a href="admin/login.php" class="btn btn-custom btn-adminlogin"><i class="fas fa-user-tie"></i>Admins</a>
   </div>
 
   <!-- Bootstrap JS -->

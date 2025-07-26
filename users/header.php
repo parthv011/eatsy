@@ -60,7 +60,7 @@
             <a class="nav-link" href="my_order.php">My Order</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../frontend/about.php">About us</a>
+            <a class="nav-link" href="about.php">About us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../auth/logout.php">Logout</a>

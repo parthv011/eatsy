@@ -157,7 +157,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg1.jpg" class="img-fluid product-image" alt="Aloo Tikki Burger">
+                    <img src="../includes/images/tc1.jpeg" class="img-fluid product-image" alt="Paneer Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold"><P>Paneer Tacos</P></h1>
@@ -178,7 +178,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg2.jpg" class="img-fluid product-image" alt="Cheese Paneer Burger">
+                    <img src="../includes/images/tc2.jpeg" class="img-fluid product-image" alt="Vegetable Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold"><P>Vegetable Tacos</P></h1>
@@ -199,7 +199,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg4.jpg" class="img-fluid product-image" alt="Black Bean Tacos">
+                    <img src="../includes/images/tc3.jpeg" class="img-fluid product-image" alt="Black Bean Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Black Bean Tacos</h1>
@@ -220,7 +220,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/mbg4.jpg" class="img-fluid product-image" alt="Black Bean Burger">
+                    <img src="../includes/images/tc4.jpeg" class="img-fluid product-image" alt="Butter Tacos">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Butter Tacos</h1>
