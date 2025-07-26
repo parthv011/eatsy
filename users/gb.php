@@ -157,7 +157,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/gd1.jpeg" class="img-fluid product-image" alt="Fluffy Bread With Crispy Crust">
+                    <img src="../includes/images/gb1.jpg" class="img-fluid product-image" alt="Fluffy Bread With Crispy Crust">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Fluffy Bread With Crispy Crust</h1>
@@ -178,7 +178,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/gd2.jpeg" class="img-fluid product-image" alt="Double Cheese Bread">
+                    <img src="../includes/images/gb2.jpg" class="img-fluid product-image" alt="Double Cheese Bread">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Double Cheese Bread</h1>
