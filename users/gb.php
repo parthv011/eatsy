@@ -157,7 +157,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/gd1.jpeg" class="img-fluid product-image" alt="Fluffy Bread With Crispy Crust">
+                    <img src="../includes/images/gb1.jpg" class="img-fluid product-image" alt="Fluffy Bread With Crispy Crust">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Fluffy Bread With Crispy Crust</h1>
@@ -178,7 +178,7 @@ body {
         <div class="col-lg-10">
             <div class="d-flex flex-column flex-md-row product-card-3d">
                 <div class="col-md-5 p-3 product-image-container">
-                    <img src="../includes/images/gd2.jpeg" class="img-fluid product-image" alt="Double Cheese Bread">
+                    <img src="../includes/images/gb2.jpg" class="img-fluid product-image" alt="Double Cheese Bread">
                 </div>
                 <div class="col-md-7 p-3 d-flex flex-column justify-content-center">
                     <h1 class="display-4 fw-bold">Double Cheese Bread</h1>
@@ -227,7 +227,7 @@ body {
                     <p class="lead">A delightful combination of crispy vegetables and spices, served in a slider format for a fun and tasty bite.</p>
                     <h2 class="mb-4 price-tag">₹ 270.00</h2>
                     <div class="d-grid gap-2 d-md-block">
-                        <a href="../backend/add_to_cart.php?item=slider_crunchy_slices" class="cart-btn">
+                        <a href="../backend/add_to_cart.php?item=slider_crunchy" class="cart-btn">
                             <i class="fas fa-shopping-cart me-2"></i>Add To Cart
                         </a>
                     </div>
