@@ -1,156 +1,386 @@
 <?php 
-    require 'header.php';
-    require_once '../includes/db.php'; // Fetch all categories 
-    $categories = $conn->query("SELECT * FROM categories ORDER BY id DESC"); 
-?> 
-<!DOCTYPE html> <html lang="en"> 
-<head> <meta charset="UTF-8" /> 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-      <title>Menu Page</title> 
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/> 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
-      <style> 
-      body {
-            background-color: #f7ece3ff; 
-            min-height: 100vh; 
-        }
-        .menu-section {
-            padding-top: 50px; 
-            padding-bottom: 50px; 
-        }
-        .custom-card {
-            border: none; 
-            border-radius: 10px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08); 
-            margin-bottom: 30px;
-        }
-        .custom-card .card-img-top {
-            border-radius: 10px 10px 0 0; 
-            height: 290px; 
-            object-fit: cover; 
-        }
-        .card-img-overlay-custom {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 15px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            z-index: 1;
-        }
-        .card-img-overlay-custom .price-badge {
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
-            color: #fff;
-            padding: 6px 12px; /* Slightly larger padding for badge */
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .card-img-overlay-custom .cart-icon-btn {
-            background-color: rgba(255, 255, 255, 0.9); /* White semi-transparent background */
-            color: #333;
-            border: none;
-            border-radius: 50%;
-            width: 38px; /* Slightly larger button */
-            height: 38px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Small shadow for the button */
-        }
-        .custom-card .card-body {
-            padding: 20px;
-            background-color: #fff; /* White background for card body */
-        }
-        .custom-card .card-title {
-            font-size: 1.5rem;
-            font-weight: 700; /* Bolder title */
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .custom-card .card-text {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-            min-height: 70px; /* Ensure consistent height for descriptions */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* Limit description to 3 lines */
-            -webkit-box-orient: vertical;
-        }
-        .delivery-info {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 15px;
-            padding-bottom: 15px; 
-            border-bottom: 1px solid #eee; 
-            margin-bottom: 15px; 
-        }
-        .quantity-controls .input-group-text {
-            background-color: #f8f9fa; /* Lighter background for quantity display */
-            border: 1px solid #e9ecef;
-            color: #555;
-            min-width: 45px; /* Ensure uniform width */
-            justify-content: center;
-            font-weight: 500;
-        }
-        .quantity-controls .btn-outline-secondary {
-            border-color: #e9ecef;
-            color: #555;
-            background-color: #f2f2f2;
-            padding: 0.375rem 0.75rem; /* Standard button padding */
-        }
-        .quantity-controls .btn-outline-secondary:hover {
-            background-color: #e2e6ea;
-            border-color: #dae0e5;
-        }
-        .order-button-group {
-            background-color: #fff; 
-            padding: 0 20px 20px; 
-        }
-        .order-button-group .btn-primary {
-            background-color: #e62e4a;
-            border-color: #e62e4a;
-            font-weight: bold;
-            padding: 10px 0; /* Vertical padding */
-            font-size: 1.1rem;
-            border-radius: 8px; 
-        }
-        .order-button-group .btn-primary:hover {
-            background-color: #cf2941;
-            border-color: #be253a;
+require('header.php');
+require_once '../includes/db.php';
+
+// Fetch all categories
+$categories = [];
+$cat_result = $conn->query("SELECT * FROM categories ORDER BY name");
+while ($row = $cat_result->fetch_assoc()) {
+    $categories[] = $row;
+}
+
+// Get selected category (default to first category or 'all')
+$selected_category = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+// Fetch menu items based on selected category
+if ($selected_category === 'all') {
+    $menu_query = "SELECT mi.*, c.name as category_name FROM menu_items mi 
+                   JOIN categories c ON mi.category_id = c.id 
+                   ORDER BY c.name, mi.name";
+} else {
+    $menu_query = "SELECT mi.*, c.name as category_name FROM menu_items mi 
+                   JOIN categories c ON mi.category_id = c.id 
+                   WHERE c.id = ? 
+                   ORDER BY mi.name";
+}
+
+$menu_items = [];
+if ($selected_category === 'all') {
+    $menu_result = $conn->query($menu_query);
+} else {
+    $stmt = $conn->prepare($menu_query);
+    $stmt->bind_param("i", $selected_category);
+    $stmt->execute();
+    $menu_result = $stmt->get_result();
+}
+
+while ($row = $menu_result->fetch_assoc()) {
+    $menu_items[] = $row;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Food Delivery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            background-color: #f7ece3ff;
         }
 
-      </style> 
-</head> 
-<body> 
-    <div class="container menu-section"> 
-    <div class="row">
-<?php 
-while ($cat = $categories->fetch_assoc()): 
-?>
-  <div class="col-md-6 col-lg-4">
-    <div class="card custom-card">
-      <div class="position-relative">
-        <img src="<?= htmlspecialchars($cat['image']) ?>" class="card-img-top" alt="<?= htmlspecialchars($cat['name']) ?>">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"><?= htmlspecialchars($cat['name']) ?></h5>
-        <p class="card-text">
-          <?= htmlspecialchars($cat['description'] ?: 'Explore our variety of delicious items in this category.') ?>
-        </p>
-      </div>
-      <div class="order-button-group text-center">
-        <a href="menu_item.php?category_id=<?= $cat['id'] ?>">
-          <button class="btn btn-primary w-100">Menu</button>
-        </a>
-      </div>
+        .category-btn {
+            color: #BA8C63 !important;
+            border-color: #BA8C63;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: #BA8C63 !important;
+            color: white !important;
+            border-color: #BA8C63;
+        }
+
+        .menu-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .add-to-cart-btn {
+            background-color: #BA8C63;
+            border-color: #BA8C63;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #a67c56;
+            border-color: #a67c56;
+            transform: scale(1.05);
+        }
+
+        .price-tag {
+            color: #BA8C63;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .category-section {
+            margin: 2rem 0;
+        }
+
+        .menu-item-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .quantity-controls {
+            display: none;
+        }
+
+        .quantity-controls.show {
+            display: flex;
+        }
+
+        .quantity-btn {
+            background-color: #BA8C63;
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .quantity-display {
+            background-color: #f8f9fa;
+            border: 2px solid #BA8C63;
+            min-width: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: #BA8C63;
+        }
+
+        .cart-summary {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #BA8C63;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            display: none;
+        }
+
+        .cart-summary.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Image -->
+    <div style="z-index: 50; transform: translateY(0%); width: 100%;">
+        <img src="../includes/uploads/bg-2.jpg" class="img-fluid mainimg" alt="Menu Background">
     </div>
-  </div>
-<?php endwhile; ?>
-</div> </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <?php require('footer.php') ?> </body> </html>
+
+    <!-- Menu Title -->
+    <h2 class="mt-4 pt-4 text-center mb-4 fw-bold h-font">OUR MENU</h2>
+
+    <div class="container">
+        <!-- Category Filter Buttons -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 text-center">
+                <div class="btn-group flex-wrap" role="group">
+                    <a href="menu.php?category=all" 
+                       class="btn category-btn <?= $selected_category === 'all' ? 'active' : '' ?>">
+                        All Items
+                    </a>
+                    <?php foreach ($categories as $category): ?>
+                        <a href="menu.php?category=<?= $category['id'] ?>" 
+                           class="btn category-btn <?= $selected_category == $category['id'] ? 'active' : '' ?>">
+                            <?= htmlspecialchars($category['name']) ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Items -->
+        <?php if (empty($menu_items)): ?>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="alert alert-info">
+                        <h4>No menu items found</h4>
+                        <p>Please check back later or contact us for more information.</p>
+                    </div>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="row">
+                <?php foreach ($menu_items as $item): ?>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card menu-card h-100">
+                            <?php if ($item['image'] && file_exists($item['image'])): ?>
+                                <img src="<?= htmlspecialchars($item['image']) ?>" 
+                                     class="card-img-top menu-item-image" 
+                                     alt="<?= htmlspecialchars($item['name']) ?>">
+                            <?php else: ?>
+                                <div class="menu-item-image bg-light d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2">
+                                    <span class="badge bg-secondary"><?= htmlspecialchars($item['category_name']) ?></span>
+                                </div>
+                                
+                                <h5 class="card-title"><?= htmlspecialchars($item['name']) ?></h5>
+                                
+                                <?php if (!empty($item['description'])): ?>
+                                    <p class="card-text text-muted flex-grow-1">
+                                        <?= htmlspecialchars($item['description']) ?>
+                                    </p>
+                                <?php endif; ?>
+                                
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="price-tag">₹<?= number_format($item['price'], 2) ?></span>
+                                    
+                                    <div class="cart-controls">
+                                        <!-- Add to Cart Button -->
+                                        <button class="btn add-to-cart-btn btn-sm add-item-btn" 
+                                                data-id="<?= $item['id'] ?>"
+                                                data-name="<?= htmlspecialchars($item['name']) ?>"
+                                                data-price="<?= $item['price'] ?>">
+                                            <i class="bi bi-cart-plus"></i> Add to Cart
+                                        </button>
+                                        
+                                        <!-- Quantity Controls (Hidden by default) -->
+                                        <div class="quantity-controls align-items-center gap-2" id="qty-<?= $item['id'] ?>">
+                                            <button class="quantity-btn decrease-btn" data-id="<?= $item['id'] ?>">
+                                                <i class="bi bi-dash"></i>
+                                            </button>
+                                            <input type="text" class="form-control quantity-display" 
+                                                   value="1" readonly id="quantity-<?= $item['id'] ?>">
+                                            <button class="quantity-btn increase-btn" data-id="<?= $item['id'] ?>">
+                                                <i class="bi bi-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <!-- Cart Summary (Fixed Position) -->
+    <div class="cart-summary" id="cartSummary">
+        <i class="bi bi-cart3"></i>
+        <span id="cartCount">0</span> items | ₹<span id="cartTotal">0.00</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-5" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+                    <h2 class="display-5 fw-bold mb-3 text-dark">Taste the convenience.</h2>
+                    <p class="lead mb-4 text-secondary">
+                        A leading platform in India that evolved from restaurant reviews to a comprehensive food delivery service, 
+                        offering user-generated reviews and ratings.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="../includes/uploads/dboy.jpg" class="img-fluid rounded" alt="Food Delivery">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+        
+        // Update cart display
+        function updateCartDisplay() {
+            let totalItems = 0;
+            let totalPrice = 0;
+            
+            for (let id in cart) {
+                totalItems += cart[id].quantity;
+                totalPrice += cart[id].quantity * cart[id].price;
+            }
+            
+            document.getElementById('cartCount').textContent = totalItems;
+            document.getElementById('cartTotal').textContent = totalPrice.toFixed(2);
+            
+            const cartSummary = document.getElementById('cartSummary');
+            if (totalItems > 0) {
+                cartSummary.classList.add('show');
+            } else {
+                cartSummary.classList.remove('show');
+            }
+            
+            // Update individual item displays
+            for (let id in cart) {
+                const addBtn = document.querySelector(`[data-id="${id}"].add-item-btn`);
+                const qtyControls = document.getElementById(`qty-${id}`);
+                const qtyDisplay = document.getElementById(`quantity-${id}`);
+                
+                if (cart[id].quantity > 0) {
+                    addBtn.style.display = 'none';
+                    qtyControls.classList.add('show');
+                    qtyDisplay.value = cart[id].quantity;
+                } else {
+                    addBtn.style.display = 'inline-block';
+                    qtyControls.classList.remove('show');
+                }
+            }
+        }
+        
+        // Add item to cart
+        document.querySelectorAll('.add-item-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const name = this.dataset.name;
+                const price = parseFloat(this.dataset.price);
+                
+                if (!cart[id]) {
+                    cart[id] = {
+                        name: name,
+                        price: price,
+                        quantity: 0
+                    };
+                }
+                
+                cart[id].quantity++;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            });
+        });
+        
+        // Increase quantity
+        document.querySelectorAll('.increase-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.dataset.id;
+                if (cart[id]) {
+                    cart[id].quantity++;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                }
+            });
+        });
+        
+        // Decrease quantity
+        document.querySelectorAll('.decrease-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.dataset.id;
+                if (cart[id] && cart[id].quantity > 0) {
+                    cart[id].quantity--;
+                    if (cart[id].quantity === 0) {
+                        delete cart[id];
+                    }
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartDisplay();
+                }
+            });
+        });
+        
+        // Cart summary click - redirect to cart page
+        document.getElementById('cartSummary').addEventListener('click', function() {
+            window.location.href = 'cart.php';
+        });
+        
+        // Initialize cart display on page load
+        updateCartDisplay();
+    </script>
+
+    <?php require('footer.php') ?>
+</body>
+</html>

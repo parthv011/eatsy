@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $name, $email, $password);
         if ($stmt->execute()) {
-            header("Location: ../frontend/login.php?registered=1");
+            header("Location: ../users/login.php?registered=1");
             exit;
         } else {
-            header("Location: ../frontend/register.php?error=Something went wrong");
+            header("Location: ../users/register.php?error=Something went wrong");
             exit;
         }
     }

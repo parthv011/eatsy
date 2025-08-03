@@ -84,7 +84,7 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
-      <button type="submit" class="btn btn-login mt-3">Login</button>
+      <a href="menu.php"><button type="submit" class="btn btn-login mt-3">Login</button></a>
       <div class="text-center mt-3">
         <p>Don't have an account? <a href="register.php">Register</a></p>
       </div>

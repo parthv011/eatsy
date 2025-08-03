@@ -1,33 +1,58 @@
 <?php 
 session_start();
 require('header.php');
+require_once '../includes/db.php';
 
-// Redirect if no order
-if (!isset($_SESSION['current_order'])) {
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Get order ID from URL
+$order_id = intval($_GET['order_id'] ?? 0);
+
+if ($order_id <= 0) {
     header('Location: menu.php');
     exit;
 }
 
-$order = $_SESSION['current_order'];
-// Send order confirmation email (only once)
-if (!isset($_SESSION['email_sent']) && !empty($order['customer_email'])) {
-    $to = $order['customer_email'];
-    $subject = "Your Order #" . $order['order_id'] . " is Confirmed!";
-    $message = "Hi " . $order['customer_name'] . ",\n\n" .
-               "Thank you for your order at Food Paradise!\n\n" .
-               "Order ID: " . $order['order_id'] . "\n" .
-               "Total: ₹" . number_format($order['total'], 2) . "\n\n" .
-               "We’ll notify you once it’s out for delivery.\n\n" .
-               "Bon Appétit!\n- Food Paradise Team";
+// Fetch order details
+$stmt = $conn->prepare("
+    SELECT o.*, u.name as customer_name, u.email as customer_email 
+    FROM orders o 
+    JOIN users u ON o.user_id = u.id 
+    WHERE o.id = ? AND o.user_id = ?
+");
+$stmt->bind_param("ii", $order_id, $_SESSION['user_id']);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    $headers = "From: no-reply@foodparadise.com\r\n";
-
-    mail($to, $subject, $message, $headers);
-
-    // Prevent resending on refresh
-    $_SESSION['email_sent'] = true;
+if ($result->num_rows === 0) {
+    $_SESSION['error'] = "Order not found.";
+    header('Location: menu.php');
+    exit;
 }
 
+$order = $result->fetch_assoc();
+$stmt->close();
+
+// Fetch order items
+$stmt = $conn->prepare("
+    SELECT oi.*, mi.name as item_name, mi.image as item_image 
+    FROM order_items oi 
+    JOIN menu_items mi ON oi.item_id = mi.id 
+    WHERE oi.order_id = ?
+");
+$stmt->bind_param("i", $order_id);
+$stmt->execute();
+$items_result = $stmt->get_result();
+
+$order_items = [];
+while ($row = $items_result->fetch_assoc()) {
+    $order_items[] = $row;
+}
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -35,304 +60,284 @@ if (!isset($_SESSION['email_sent']) && !empty($order['customer_email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Order Confirmation - Food Delivery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
     <style>
         body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
             background-color: #f7ece3ff;
-            min-height: 100vh;
         }
+
         .confirmation-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .confirmation-card {
             background: white;
             border-radius: 15px;
-            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .confirmation-header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 3rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
         }
+
         .success-icon {
-            color: #28a745;
             font-size: 4rem;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
+            animation: bounceIn 1s ease-out;
         }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
         .order-details {
-            background: white;
+            padding: 2rem;
+        }
+
+        .order-info-card {
+            background: #f8f9fa;
             border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
         }
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .detail-row:last-child {
-            border-bottom: none;
-        }
+
         .order-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
         }
+
         .order-item:last-child {
             border-bottom: none;
         }
+
+        .item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
         .status-badge {
-            background: #28a745;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            background-color: #ffc107;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             font-weight: bold;
         }
+
         .action-buttons {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
+            margin-top: 2rem;
         }
+
         .btn-primary-custom {
-            background: #e62e4a;
+            background: linear-gradient(135deg, #BA8C63, #a67c56);
             border: none;
             color: white;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
+
         .btn-primary-custom:hover {
-            background: #cf2941;
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(186, 140, 99, 0.4);
         }
-        .timeline {
-            background: #f8f9fa;
+
+        .estimated-time {
+            background: linear-gradient(135deg, #BA8C63, #a67c56);
+            color: white;
+            padding: 1rem;
             border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
+            text-align: center;
+            margin: 1rem 0;
         }
-        .timeline-item {
+
+        .tracking-steps {
             display: flex;
-            align-items: center;
-            margin-bottom: 15px;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
         }
-        .timeline-item:last-child {
-            margin-bottom: 0;
+
+        .tracking-step {
+            text-align: center;
+            flex: 1;
+            position: relative;
         }
-        .timeline-icon {
-            background: #28a745;
+
+        .tracking-step.active .step-circle {
+            background-color: #28a745;
             color: white;
-            width: 30px;
-            height: 30px;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background-color: #e9ecef;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            font-size: 0.8rem;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
         }
-        .timeline-icon.pending {
-            background: #6c757d;
+
+        .tracking-line {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            right: -50%;
+            height: 2px;
+            background-color: #e9ecef;
+            z-index: -1;
+        }
+
+        .tracking-step.active .tracking-line {
+            background-color: #28a745;
         }
     </style>
 </head>
+
 <body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="confirmation-container">
+                    <!-- Success Header -->
+                    <div class="confirmation-header">
+                        <div class="success-icon">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <h1 class="mb-3">Order Confirmed!</h1>
+                        <p class="lead mb-0">Thank you for your order. We're preparing your delicious meal!</p>
+                    </div>
 
-<div class="confirmation-container">
-    <!-- Success Message -->
-    <div class="confirmation-card">
-        <i class="fas fa-check-circle success-icon"></i>
-        <h2 class="text-success mb-3">Order Confirmed!</h2>
-        <p class="lead">Thank you for your order. We've received your order and it's being processed.</p>
-        <div class="mt-3">
-            <span class="status-badge">Order Confirmed</span>
-        </div>
-    </div>
-    
-    <!-- Order Summary -->
-    <div class="order-details">
-        <h5 class="mb-3">Order Details</h5>
-        
-        <div class="detail-row">
-            <strong>Order ID:</strong>
-            <span><?php echo htmlspecialchars($order['order_id']); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Order Date:</strong>
-            <span><?php echo date('F j, Y g:i A', strtotime($order['order_date'])); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Customer Name:</strong>
-            <span><?php echo htmlspecialchars($order['customer_name']); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Phone:</strong>
-            <span><?php echo htmlspecialchars($order['customer_phone']); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Email:</strong>
-            <span><?php echo htmlspecialchars($order['customer_email']); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Delivery Address:</strong>
-            <span><?php echo nl2br(htmlspecialchars($order['delivery_address'])); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Payment Method:</strong>
-            <span>
-                <?php if ($order['payment_method'] === 'cod'): ?>
-                    <i class="fas fa-money-bill-wave me-1"></i>Cash on Delivery
-                <?php else: ?>
-                    <i class="fas fa-credit-card me-1"></i>Online Payment
-                <?php endif; ?>
-            </span>
-        </div>
-        
-        <?php if (!empty($order['special_instructions'])): ?>
-        <div class="detail-row">
-            <strong>Special Instructions:</strong>
-            <span><?php echo nl2br(htmlspecialchars($order['special_instructions'])); ?></span>
-        </div>
-        <?php endif; ?>
-    </div>
-    
-    <!-- Order Items -->
-    <div class="order-details">
-        <h5 class="mb-3">Order Items</h5>
-        
-        <?php foreach ($order['items'] as $item): ?>
-        <div class="order-item">
-            <div class="d-flex align-items-center">
-                <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" 
-                     style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;" class="me-3">
-                <div>
-                    <h6 class="mb-0"><?php echo htmlspecialchars($item['name']); ?></h6>
-                    <small class="text-muted">Quantity: <?php echo $item['quantity']; ?> × ₹<?php echo number_format($item['price'], 2); ?></small>
-                </div>
-            </div>
-            <span class="fw-bold">₹<?php echo number_format($item['price'] * $item['quantity'], 2); ?></span>
-        </div>
-        <?php endforeach; ?>
-        
-        <hr class="my-3">
-        
-        <div class="detail-row">
-            <span>Subtotal</span>
-            <span>₹<?php echo number_format($order['subtotal'], 2); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <span>GST (18%)</span>
-            <span>₹<?php echo number_format($order['tax'], 2); ?></span>
-        </div>
-        
-        <div class="detail-row">
-            <span>Delivery Fee</span>
-            <span>
-                <?php if ($order['delivery_fee'] == 0): ?>
-                    <span class="text-success">FREE</span>
-                <?php else: ?>
-                    ₹<?php echo number_format($order['delivery_fee'], 2); ?>
-                <?php endif; ?>
-            </span>
-        </div>
-        
-        <div class="detail-row">
-            <strong>Total Amount</strong>
-            <strong class="text-primary">₹<?php echo number_format($order['total'], 2); ?></strong>
-        </div>
-    </div>
-    
-    <!-- Order Timeline -->
-    <div class="order-details">
-        <h5 class="mb-3">Order Status</h5>
-        
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-icon">
-                    <i class="fas fa-check"></i>
-                </div>
-                <div>
-                    <strong>Order Confirmed</strong>
-                    <br><small class="text-muted">Your order has been confirmed and is being prepared</small>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-icon pending">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <div>
-                    <strong>Preparing</strong>
-                    <br><small class="text-muted">Your delicious food is being prepared</small>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-icon pending">
-                    <i class="fas fa-motorcycle"></i>
-                </div>
-                <div>
-                    <strong>Out for Delivery</strong>
-                    <br><small class="text-muted">Your order is on the way</small>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-icon pending">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div>
-                    <strong>Delivered</strong>
-                    <br><small class="text-muted">Enjoy your meal!</small>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-3">
-            <small class="text-muted">
-                <i class="fas fa-clock me-1"></i>
-                Estimated delivery time: 30-45 minutes
-            </small>
-        </div>
-    </div>
-    
-    <!-- Action Buttons -->
-    <div class="text-center">
-        <div class="action-buttons">
-            <a href="menu.php" class="btn btn-primary-custom">
-                <i class="fas fa-utensils me-2"></i>Order Again
-            </a>
-            <a href="order_tracking.php?order_id=<?php echo urlencode($order['order_id']); ?>" class="btn btn-outline-primary">
-                <i class="fas fa-search me-2"></i>Track Order
-            </a>
-            <button onclick="window.print()" class="btn btn-outline-secondary">
-                <i class="fas fa-print me-2"></i>Print Receipt
-            </button>
-        </div>
-    </div>
-</div>
+                    <!-- Order Details -->
+                    <div class="order-details">
+                        <!-- Order Info -->
+                        <div class="order-info-card">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 style="color: #BA8C63;"><i class="bi bi-receipt"></i> Order Details</h5>
+                                    <p><strong>Order ID:</strong> #<?= $order['id'] ?></p>
+                                    <p><strong>Order Date:</strong> <?= date('M d, Y - h:i A', strtotime($order['ordered_at'])) ?></p>
+                                    <p><strong>Status:</strong> <span class="status-badge"><?= ucfirst($order['status']) ?></span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 style="color: #BA8C63;"><i class="bi bi-person"></i> Customer Info</h5>
+                                    <p><strong>Name:</strong> <?= htmlspecialchars($order['customer_name']) ?></p>
+                                    <p><strong>Email:</strong> <?= htmlspecialchars($order['customer_email']) ?></p>
+                                    <p><strong>Total Amount:</strong> <strong style="color: #BA8C63; font-size: 1.2rem;">₹<?= number_format($order['total'], 2) ?></strong></p>
+                                </div>
+                            </div>
+                        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<?php 
-require('footer.php'); 
-unset($_SESSION['current_order']);
-unset($_SESSION['email_sent']);
-?>
+                        <!-- Estimated Delivery Time -->
+                        <div class="estimated-time">
+                            <h5 class="mb-2"><i class="bi bi-clock"></i> Estimated Delivery Time</h5>
+                            <h3 class="mb-0">30 - 45 minutes</h3>
+                            <small>We'll notify you when your order is on the way!</small>
+                        </div>
+
+                        <!-- Order Tracking -->
+                        <div class="tracking-steps">
+                            <div class="tracking-step active">
+                                <div class="step-circle">1</div>
+                                <small>Order Confirmed</small>
+                                <div class="tracking-line"></div>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="step-circle">2</div>
+                                <small>Preparing</small>
+                                <div class="tracking-line"></div>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="step-circle">3</div>
+                                <small>Out for Delivery</small>
+                                <div class="tracking-line"></div>
+                            </div>
+                            <div class="tracking-step">
+                                <div class="step-circle">4</div>
+                                <small>Delivered</small>
+                            </div>
+                        </div>
+
+                        <!-- Order Items -->
+                        <div class="order-info-card">
+                            <h5 style="color: #BA8C63;" class="mb-3"><i class="bi bi-bag"></i> Your Items</h5>
+                            <?php foreach ($order_items as $item): ?>
+                                <div class="order-item">
+                                    <div class="item-image bg-light d-flex align-items-center justify-content-center">
+                                        <?php if ($item['item_image'] && file_exists($item['item_image'])): ?>
+                                            <img src="<?= htmlspecialchars($item['item_image']) ?>" alt="<?= htmlspecialchars($item['item_name']) ?>" class="item-image">
+                                        <?php else: ?>
+                                            <i class="bi bi-image text-muted"></i>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1"><?= htmlspecialchars($item['item_name']) ?></h6>
+                                        <small class="text-muted">Quantity: <?= $item['quantity'] ?></small>
+                                    </div>
+                                    <div class="text-end">
+                                        <strong style="color: #BA8C63;">₹<?= number_format($item['price'] * $item['quantity'], 2) ?></strong>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <a href="menu.php" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left"></i> Continue Shopping
+                            </a>
+                            <a href="my_orders.php" class="btn btn-primary-custom">
+                                <i class="bi bi-list-ul"></i> View All Orders
+                            </a>
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="text-center mt-4 p-3" style="background: #e8f5e8; border-radius: 10px;">
+                            <h6 style="color: #28a745;"><i class="bi bi-info-circle"></i> What's Next?</h6>
+                            <p class="mb-0 small">
+                                You will receive SMS/Email updates about your order status. 
+                                Our delivery partner will contact you when your order is on the way.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Optional: Auto-refresh order status -->
+    <script>
+        // Clear localStorage cart after successful order
+        localStorage.removeItem('cart');
+        
+        // Optional: Simulate order progress (for demo)
+        setTimeout(() => {
+            const steps = document.querySelectorAll('.tracking-step');
+            if (steps.length > 1) {
+                steps[1].classList.add('active');
+            }
+        }, 5000); // After 5 seconds, mark as "Preparing"
+    </script>
+
+    <?php require('footer.php') ?>
 </body>
 </html>

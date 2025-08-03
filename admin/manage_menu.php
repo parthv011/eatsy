@@ -55,7 +55,7 @@ if (isset($_POST['add_item'])) {
         $image_path = uploadImage($_FILES['image']);
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
-        header("Location: manage_item.php");
+        header("Location: manage_menu.php");
         exit;
     }
 
@@ -71,7 +71,7 @@ if (isset($_POST['add_item'])) {
     } else {
         $_SESSION['error'] = "Please fill in all required fields including image.";
     }
-    header("Location: manage_item.php");
+    header("Location: manage_menu.php");
     exit;
 }
 
@@ -88,7 +88,7 @@ if (isset($_POST['edit_item'])) {
         $image_path = uploadImage($_FILES['image']);
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
-        header("Location: manage_item.php?edit_id=" . $id);
+        header("Location: manage_menu.php?edit_id=" . $id);
         exit;
     }
 
@@ -117,7 +117,7 @@ if (isset($_POST['edit_item'])) {
     } else {
         $_SESSION['error'] = "Please fill in all required fields.";
     }
-    header("Location: manage_item.php");
+    header("Location: manage_menu.php");
     exit;
 }
 
@@ -133,7 +133,7 @@ if (isset($_GET['delete_id'])) {
         $_SESSION['error'] = "Failed to delete item.";
     }
     $stmt->close();
-    header("Location: manage_item.php");
+    header("Location: manage_menu.php");
     exit;
 }
 
