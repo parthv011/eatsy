@@ -1,7 +1,7 @@
 <?php
 session_start();
-require('header.php'); // Your DB connection included here
-
+require('../includes/header.php'); // Your DB connection included here
+require('../includes/db.php');
 // Update order status if POSTed
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['status'])) {
     $order_id = (int)$_POST['order_id'];
@@ -33,9 +33,9 @@ $result = $conn->query($sql);
 
 function getOrderItems($conn, $order_id) {
     $stmt = $conn->prepare("
-        SELECT mi.name, oi.quantity 
-        FROM order_items oi 
-        JOIN menu_items mi ON oi.menu_item_id = mi.id 
+        SELECT mi.name, oi.quantity
+        FROM order_items oi
+        JOIN menu_items mi ON oi.item_id = mi.id
         WHERE oi.order_id = ?
     ");
     $stmt->bind_param('i', $order_id);
@@ -48,6 +48,7 @@ function getOrderItems($conn, $order_id) {
     $stmt->close();
     return $items;
 }
+
 ?>
 
 <!DOCTYPE html>
