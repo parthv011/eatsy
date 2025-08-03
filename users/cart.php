@@ -2,7 +2,7 @@
 require('header.php');
 require_once '../includes/db.php';
 
-// Check if user is logged in (you may need to adjust this based on your auth system)
+// Check if user is logged in
 session_start();
 $user_logged_in = isset($_SESSION['user_id']);
 
@@ -22,18 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
         $conn->begin_transaction();
         
         try {
-            // Insert order
-            $stmt = $conn->prepare("INSERT INTO orders (user_id, total, status) VALUES (?, ?, 'Pending')");
+            // Insert order - Fixed: using correct column name 'total'
+            $stmt = $conn->prepare("INSERT INTO orders (user_id, total, status, ordered_at) VALUES (?, ?, 'Pending', NOW())");
             $stmt->bind_param("id", $_SESSION['user_id'], $total_amount);
             $stmt->execute();
             $order_id = $conn->insert_id;
             $stmt->close();
             
-            // Insert order items
-            $stmt = $conn->prepare("INSERT INTO order_items (order_id, menu_item_id, quantity) VALUES (?, ?, ?)");
+            // Insert order items - Fixed: using correct column names
+            $stmt = $conn->prepare("INSERT INTO order_items (order_id, item_id, quantity, price) VALUES (?, ?, ?, ?)");
             
             foreach ($cart_data as $item_id => $item) {
-                $stmt->bind_param("iii", $order_id, $item_id, $item['quantity']);
+                $stmt->bind_param("iiid", $order_id, $item_id, $item['quantity'], $item['price']);
                 $stmt->execute();
             }
             $stmt->close();
@@ -47,8 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
             
         } catch (Exception $e) {
             $conn->rollback();
-            $_SESSION['error'] = "Failed to place order. Please try again.";
+            $_SESSION['error'] = "Failed to place order. Please try again. Error: " . $e->getMessage();
         }
+    } else {
+        $_SESSION['error'] = "Cart is empty or invalid.";
     }
 }
 ?>
@@ -255,6 +257,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
     </div>
 
     <div class="container my-5">
+        <!-- Display notifications -->
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success alert-dismissible fade show">
+                <?= htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show">
+                <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+
         <div class="row">
             <div class="col-lg-8">
                 <!-- Cart Container -->
@@ -335,9 +352,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
                         <input type="hidden" name="cart_data" id="cartDataInput">
                         <input type="hidden" name="total_amount" id="totalAmountInput">
                         <input type="hidden" name="place_order" value="1">
-                        <a href="checkout.php"><button type="button" class="btn checkout-btn mt-3" ">
+                        
+                        <!-- Fixed checkout button -->
+                        <button type="button" class="btn checkout-btn mt-3" onclick="proceedToCheckout()">
                             <i class="bi bi-credit-card"></i> Proceed to Checkout
-                        </button></a>
+                        </button>
                     </form>
                     
                     <div class="text-center mt-3">
@@ -496,7 +515,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
             }
         }
 
-        // Proceed to checkout
+        // Proceed to checkout - FIXED FUNCTION
         function proceedToCheckout() {
             if (Object.keys(cart).length === 0) {
                 alert('Your cart is empty!');
@@ -508,9 +527,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
                     // Store cart in localStorage before redirect
                     localStorage.setItem('cart', JSON.stringify(cart));
                     window.location.href = 'login.php';
-                }
-                else {
-                    window.location.href = 'checkout.php';
                 }
                 return;
             <?php endif; ?>
@@ -547,6 +563,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
                 const checkoutBtn = document.querySelector('.checkout-btn');
                 checkoutBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Processing...';
                 checkoutBtn.disabled = true;
+                
+                // Clear cart from localStorage since we're placing the order
+                localStorage.removeItem('cart');
                 
                 document.getElementById('checkoutForm').submit();
             }

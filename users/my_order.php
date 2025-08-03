@@ -56,7 +56,7 @@ $count_stmt->close();
 
 $total_pages = ceil($total_orders / $per_page);
 
-// Fetch user's orders with pagination
+// Fetch user's orders with pagination - FIXED: use correct column name
 $stmt = $conn->prepare("
     SELECT o.*, u.name as customer_name 
     FROM orders o 
@@ -75,10 +75,10 @@ while ($row = $orders_result->fetch_assoc()) {
 }
 $stmt->close();
 
-// Function to get order items
+// Function to get order items - FIXED: use correct column names
 function getOrderItems($conn, $order_id) {
     $stmt = $conn->prepare("
-        SELECT oi.*, mi.name as item_name, mi.image as item_image, mi.id as menu_item_id
+        SELECT oi.*, mi.name as item_name, mi.image as item_image, oi.item_id as menu_item_id
         FROM order_items oi 
         JOIN menu_items mi ON oi.item_id = mi.id 
         WHERE oi.order_id = ?
@@ -332,7 +332,7 @@ function getStatusIcon($status) {
 <body>
     <!-- Header Image -->
     <div style="z-index: 50; transform: translateY(0%); width: 100%;">
-        <img src="includes/images/bg-2.jpg" class="img-fluid mainimg" alt="My Orders Background">
+        <img src="../includes/uploads/bg-2.jpg" class="img-fluid mainimg" alt="My Orders Background">
     </div>
 
     <div class="container my-5">
@@ -441,7 +441,7 @@ function getStatusIcon($status) {
                                     <?php foreach ($order_items as $item): ?>
                                         <div class="order-item">
                                             <div class="item-image bg-light d-flex align-items-center justify-content-center">
-                                                <?php if ($item['item_image'] && file_exists($item['item_image'])): ?>
+                                                <?php if (!empty($item['item_image']) && file_exists($item['item_image'])): ?>
                                                     <img src="<?= htmlspecialchars($item['item_image']) ?>" alt="<?= htmlspecialchars($item['item_name']) ?>" class="item-image">
                                                 <?php else: ?>
                                                     <i class="bi bi-image text-muted"></i>
@@ -454,7 +454,7 @@ function getStatusIcon($status) {
                                             <div class="text-end">
                                                 <strong style="color: #BA8C63;">₹<?= number_format($item['price'] * $item['quantity'], 2) ?></strong>
                                                 <br>
-                                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(<?= $item['menu_item_id'] ?>, '<?= htmlspecialchars($item['item_name']) ?>', <?= $item['price'] ?>)">
+                                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(<?= $item['menu_item_id'] ?>, '<?= htmlspecialchars(addslashes($item['item_name'])) ?>', <?= $item['price'] ?>)">
                                                     <i class="bi bi-cart-plus"></i>
                                                 </button>
                                             </div>
@@ -574,40 +574,28 @@ function getStatusIcon($status) {
             });
         }
 
-        // Add item to cart
+        // Add item to cart - Fixed to use localStorage like in cart.php
         function addToCart(itemId, itemName, itemPrice) {
-            fetch('add_to_cart.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `action=add&item_id=${itemId}&quantity=1`
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(`${itemName} added to cart!`);
-                } else {
-                    alert('Failed to add item to cart: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while adding item to cart');
-            });
+            let cart = JSON.parse(localStorage.getItem('cart')) || {};
+            
+            if (cart[itemId]) {
+                cart[itemId].quantity += 1;
+            } else {
+                cart[itemId] = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: 1
+                };
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${itemName} added to cart!`);
         }
 
         // Reorder all items from an order
         function reorderItems(orderId) {
             if (confirm('Add all items from this order to your cart?')) {
-                // Get all items from this order
-                const orderCard = document.querySelector(`[data-status] .order-body#orderDetails${orderId}`);
-                if (!orderCard) {
-                    // If details are not visible, we need to get items via AJAX or show details first
-                    alert('Please view order details first, then try reordering.');
-                    return;
-                }
-                
+                const orderCard = document.querySelector(`#orderDetails${orderId}`);
                 const addButtons = orderCard.querySelectorAll('button[onclick*="addToCart"]');
                 let itemsAdded = 0;
                 
@@ -618,28 +606,27 @@ function getStatusIcon($status) {
                     if (matches) {
                         const [, itemId, itemName, itemPrice] = matches;
                         
-                        fetch('add_to_cart.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `action=add&item_id=${itemId}&quantity=1`
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                itemsAdded++;
-                            }
-                        });
+                        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+                        
+                        if (cart[itemId]) {
+                            cart[itemId].quantity += 1;
+                        } else {
+                            cart[itemId] = {
+                                name: itemName,
+                                price: parseFloat(itemPrice),
+                                quantity: 1
+                            };
+                        }
+                        
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        itemsAdded++;
                     }
                 });
                 
-                setTimeout(() => {
-                    alert(`${itemsAdded} items added to cart!`);
-                    if (confirm('Go to cart now?')) {
-                        window.location.href = 'cart.php';
-                    }
-                }, 1000);
+                alert(`${itemsAdded} items added to cart!`);
+                if (confirm('Go to cart now?')) {
+                    window.location.href = 'cart.php';
+                }
             }
         }
 
