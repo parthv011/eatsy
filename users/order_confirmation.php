@@ -303,7 +303,7 @@ $stmt->close();
                             <a href="menu.php" class="btn btn-outline-secondary">
                                 <i class="bi bi-arrow-left"></i> Continue Shopping
                             </a>
-                            <a href="my_orders.php" class="btn btn-primary-custom">
+                            <a href="my_order.php" class="btn btn-primary-custom">
                                 <i class="bi bi-list-ul"></i> View All Orders
                             </a>
                         </div>
