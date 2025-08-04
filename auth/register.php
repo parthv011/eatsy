@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $check->store_result();
 
     if ($check->num_rows > 0) {
-        header("Location: ../frontend/register.php?error=Email already registered");
+        header("Location: ../users/register.php?error=Email already registered");
         exit;
     } else {
         $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");

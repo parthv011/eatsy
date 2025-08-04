@@ -55,15 +55,15 @@ while ($row = $menu_result->fetch_assoc()) {
         }
 
         .category-btn {
-            color: #BA8C63 !important;
-            border-color: #BA8C63;
+            color: #FF7D29 !important;
+            border-color: #FF7D29;
             transition: all 0.3s ease;
         }
 
         .category-btn:hover, .category-btn.active {
-            background-color: #BA8C63 !important;
+            background-color: #FF7D29 !important;
             color: white !important;
-            border-color: #BA8C63;
+            border-color: #FF7D29;
         }
 
         .menu-card {
@@ -78,20 +78,20 @@ while ($row = $menu_result->fetch_assoc()) {
         }
 
         .add-to-cart-btn {
-            background-color: #BA8C63;
-            border-color: #BA8C63;
+            background-color: #FF7D29;
+            border-color: #FF7D29;
             color: white;
             transition: all 0.3s ease;
         }
 
         .add-to-cart-btn:hover {
-            background-color: #a67c56;
-            border-color: #a67c56;
+            background-color: #FF7D29;
+            border-color: #FF7D29;
             transform: scale(1.05);
         }
 
         .price-tag {
-            color: #BA8C63;
+            color: #FF7D29;
             font-weight: bold;
             font-size: 1.2rem;
         }
@@ -115,7 +115,7 @@ while ($row = $menu_result->fetch_assoc()) {
         }
 
         .quantity-btn {
-            background-color: #BA8C63;
+            background-color: #FF7D29;
             border: none;
             color: white;
             width: 30px;
@@ -129,18 +129,18 @@ while ($row = $menu_result->fetch_assoc()) {
 
         .quantity-display {
             background-color: #f8f9fa;
-            border: 2px solid #BA8C63;
+            border: 2px solid #FF7D29;
             min-width: 50px;
             text-align: center;
             font-weight: bold;
-            color: #BA8C63;
+            color: #FF7D29;
         }
 
         .cart-summary {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #BA8C63;
+            background: #FF7D29;
             color: white;
             padding: 15px 20px;
             border-radius: 50px;
