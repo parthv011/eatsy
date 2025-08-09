@@ -15,13 +15,13 @@ $selected_category = isset($_GET['category']) ? $_GET['category'] : 'all';
 // Fetch menu items based on selected category
 if ($selected_category === 'all') {
     $menu_query = "SELECT mi.*, c.name as category_name FROM menu_items mi 
-                   JOIN categories c ON mi.category_id = c.id 
-                   ORDER BY c.name, mi.name";
+                JOIN categories c ON mi.category_id = c.id 
+                ORDER BY c.name, mi.name";
 } else {
     $menu_query = "SELECT mi.*, c.name as category_name FROM menu_items mi 
-                   JOIN categories c ON mi.category_id = c.id 
-                   WHERE c.id = ? 
-                   ORDER BY mi.name";
+                JOIN categories c ON mi.category_id = c.id 
+                WHERE c.id = ? 
+                ORDER BY mi.name";
 }
 
 $menu_items = [];
@@ -170,13 +170,9 @@ while ($row = $menu_result->fetch_assoc()) {
         <div class="row justify-content-center mb-4">
             <div class="col-12 text-center">
                 <div class="btn-group flex-wrap" role="group">
-                    <a href="menu.php?category=all" 
-                       class="btn category-btn <?= $selected_category === 'all' ? 'active' : '' ?>">
-                        All Items
-                    </a>
                     <?php foreach ($categories as $category): ?>
                         <a href="menu.php?category=<?= $category['id'] ?>" 
-                           class="btn category-btn <?= $selected_category == $category['id'] ? 'active' : '' ?>">
+                            class="btn category-btn <?= $selected_category == $category['id'] ? 'active' : '' ?>">
                             <?= htmlspecialchars($category['name']) ?>
                         </a>
                     <?php endforeach; ?>
@@ -201,8 +197,8 @@ while ($row = $menu_result->fetch_assoc()) {
                         <div class="card menu-card h-100">
                             <?php if ($item['image'] && file_exists($item['image'])): ?>
                                 <img src="<?= htmlspecialchars($item['image']) ?>" 
-                                     class="card-img-top menu-item-image" 
-                                     alt="<?= htmlspecialchars($item['name']) ?>">
+                                    class="card-img-top menu-item-image" 
+                                    alt="<?= htmlspecialchars($item['name']) ?>">
                             <?php else: ?>
                                 <div class="menu-item-image bg-light d-flex align-items-center justify-content-center">
                                     <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
@@ -239,8 +235,7 @@ while ($row = $menu_result->fetch_assoc()) {
                                             <button class="quantity-btn decrease-btn" data-id="<?= $item['id'] ?>">
                                                 <i class="bi bi-dash"></i>
                                             </button>
-                                            <input type="text" class="form-control quantity-display" 
-                                                   value="1" readonly id="quantity-<?= $item['id'] ?>">
+                                            <input type="text" class="form-control quantity-display" value="1" readonly id="quantity-<?= $item['id'] ?>">
                                             <button class="quantity-btn increase-btn" data-id="<?= $item['id'] ?>">
                                                 <i class="bi bi-plus"></i>
                                             </button>
