@@ -128,7 +128,7 @@ while ($row = $menu_result->fetch_assoc()) {
         }
 
         .quantity-display {
-            background-color: #f8f9fa;
+            background-color: #FF7D29;
             border: 2px solid #FF7D29;
             min-width: 50px;
             text-align: center;
@@ -174,7 +174,7 @@ while ($row = $menu_result->fetch_assoc()) {
                        class="btn category-btn <?= $selected_category === 'all' ? 'active' : '' ?>">
                         All Items
                     </a>
-                    <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category): ?> 
                         <a href="menu.php?category=<?= $category['id'] ?>" 
                            class="btn category-btn <?= $selected_category == $category['id'] ? 'active' : '' ?>">
                             <?= htmlspecialchars($category['name']) ?>
