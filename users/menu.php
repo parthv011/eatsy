@@ -9,7 +9,7 @@ while ($row = $cat_result->fetch_assoc()) {
     $categories[] = $row;
 }
 
-// Get selected category (default to first category or 'all')
+// Get selected category (default to 'all')
 $selected_category = isset($_GET['category']) ? $_GET['category'] : 'all';
 
 // Fetch menu items based on selected category
@@ -58,6 +58,7 @@ while ($row = $menu_result->fetch_assoc()) {
             color: #BA8C63 !important;
             border-color: #BA8C63;
             transition: all 0.3s ease;
+            margin: 2px;
         }
 
         .category-btn:hover, .category-btn.active {
@@ -104,6 +105,7 @@ while ($row = $menu_result->fetch_assoc()) {
             height: 200px;
             object-fit: cover;
             border-radius: 8px 8px 0 0;
+            width: 100%;
         }
 
         .quantity-controls {
@@ -153,6 +155,15 @@ while ($row = $menu_result->fetch_assoc()) {
         .cart-summary.show {
             display: block;
         }
+
+        .no-image-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px 8px 0 0;
+        }
     </style>
 </head>
 
@@ -169,7 +180,13 @@ while ($row = $menu_result->fetch_assoc()) {
         <!-- Category Filter Buttons -->
         <div class="row justify-content-center mb-4">
             <div class="col-12 text-center">
-                <div class="btn-group flex-wrap" role="group">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <!-- All Categories Button -->
+                    <a href="menu.php?category=all" 
+                        class="btn category-btn <?= $selected_category == 'all' ? 'active' : '' ?>">
+                        All Categories
+                    </a>
+                    
                     <?php foreach ($categories as $category): ?>
                         <a href="menu.php?category=<?= $category['id'] ?>" 
                             class="btn category-btn <?= $selected_category == $category['id'] ? 'active' : '' ?>">
@@ -195,13 +212,45 @@ while ($row = $menu_result->fetch_assoc()) {
                 <?php foreach ($menu_items as $item): ?>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card menu-card h-100">
-                            <?php if ($item['image'] && file_exists($item['image'])): ?>
-                                <img src="<?= htmlspecialchars($item['image']) ?>" 
-                                    class="card-img-top menu-item-image" 
-                                    alt="<?= htmlspecialchars($item['name']) ?>">
+                            <?php 
+                            $image_exists = false;
+                            $image_path = '';
+                            
+                            if ($item['image']) {
+                                // Try different possible paths
+                                $possible_paths = [
+                                    '../' . $item['image'],
+                                    $item['image'],
+                                    '../includes/uploads/' . $item['image']
+                                ];
+                                
+                                foreach ($possible_paths as $path) {
+                                    if (file_exists($path)) {
+                                        $image_exists = true;
+                                        $image_path = str_replace('../', '', $path);
+                                        break;
+                                    }
+                                }
+                            }
+                            ?>
+                            
+                            <?php if ($image_exists): ?>
+                                <img src="../<?= htmlspecialchars($image_path) ?>" 
+                                    class="menu-item-image" 
+                                    alt="<?= htmlspecialchars($item['name']) ?>"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="no-image-placeholder" style="display: none;">
+                                    <div class="text-center">
+                                        <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                                        <p class="text-muted mt-2">Image not available</p>
+                                    </div>
+                                </div>
                             <?php else: ?>
-                                <div class="menu-item-image bg-light d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                                <div class="no-image-placeholder">
+                                    <div class="text-center">
+                                        <i class="bi bi-image text-muted" style="font-size: 3rem;"></i>
+                                        <p class="text-muted mt-2">Image not available</p>
+                                    </div>
                                 </div>
                             <?php endif; ?>
                             
@@ -279,10 +328,9 @@ while ($row = $menu_result->fetch_assoc()) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Cart functionality
+        // Cart functionality (same as before)
         let cart = JSON.parse(localStorage.getItem('cart')) || {};
         
-        // Update cart display
         function updateCartDisplay() {
             let totalItems = 0;
             let totalPrice = 0;
@@ -302,24 +350,22 @@ while ($row = $menu_result->fetch_assoc()) {
                 cartSummary.classList.remove('show');
             }
             
-            // Update individual item displays
             for (let id in cart) {
                 const addBtn = document.querySelector(`[data-id="${id}"].add-item-btn`);
                 const qtyControls = document.getElementById(`qty-${id}`);
                 const qtyDisplay = document.getElementById(`quantity-${id}`);
                 
                 if (cart[id].quantity > 0) {
-                    addBtn.style.display = 'none';
-                    qtyControls.classList.add('show');
-                    qtyDisplay.value = cart[id].quantity;
+                    if (addBtn) addBtn.style.display = 'none';
+                    if (qtyControls) qtyControls.classList.add('show');
+                    if (qtyDisplay) qtyDisplay.value = cart[id].quantity;
                 } else {
-                    addBtn.style.display = 'inline-block';
-                    qtyControls.classList.remove('show');
+                    if (addBtn) addBtn.style.display = 'inline-block';
+                    if (qtyControls) qtyControls.classList.remove('show');
                 }
             }
         }
         
-        // Add item to cart
         document.querySelectorAll('.add-item-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const id = this.dataset.id;
@@ -327,11 +373,7 @@ while ($row = $menu_result->fetch_assoc()) {
                 const price = parseFloat(this.dataset.price);
                 
                 if (!cart[id]) {
-                    cart[id] = {
-                        name: name,
-                        price: price,
-                        quantity: 0
-                    };
+                    cart[id] = { name: name, price: price, quantity: 0 };
                 }
                 
                 cart[id].quantity++;
@@ -340,7 +382,6 @@ while ($row = $menu_result->fetch_assoc()) {
             });
         });
         
-        // Increase quantity
         document.querySelectorAll('.increase-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const id = this.dataset.id;
@@ -352,7 +393,6 @@ while ($row = $menu_result->fetch_assoc()) {
             });
         });
         
-        // Decrease quantity
         document.querySelectorAll('.decrease-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const id = this.dataset.id;
@@ -367,12 +407,10 @@ while ($row = $menu_result->fetch_assoc()) {
             });
         });
         
-        // Cart summary click - redirect to cart page
         document.getElementById('cartSummary').addEventListener('click', function() {
             window.location.href = 'cart.php';
         });
         
-        // Initialize cart display on page load
         updateCartDisplay();
     </script>
 
